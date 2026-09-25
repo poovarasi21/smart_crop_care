@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".SmartCropCareApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/file_paths"
+        android:fullBackupContent="@xml/file_paths"
+        android:icon="@drawable/ic_agriculture"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_agriculture"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartCropCare"
+        tools:targetApi="36">
+
+        <!-- Splash Screen Launcher Activity -->
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SmartCropCare">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.auth.LoginActivity" android:exported="false"/>
+        <activity android:name=".ui.auth.RegisterActivity" android:exported="false"/>
+
+        <!-- Main Dashboard Navigation Activity -->
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartCropCare" />
+
+        <!-- Crop Overview & Lifecycle Management -->
+        <activity
+            android:name=".ui.overview.CropOverviewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartCropCare" />
+
+        <!-- AI Leaf Disease Detection Activity -->
+        <activity
+            android:name=".ui.disease.AiDiseaseDetectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartCropCare" />
+
+        <!-- Digital Crop Passport Activity -->
+        <activity
+            android:name=".ui.passport.DigitalCropPassportActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartCropCare" />
+
+        <!-- File Provider for PDF and Image sharing -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

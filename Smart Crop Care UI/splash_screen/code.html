@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Crop Care - AI Farm Management System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#eaf1ff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "primary": "#00450d",
+            "inverse-surface": "#27313f",
+            "secondary-container": "#a0f399",
+            "on-primary-container": "#90d689",
+            "on-surface": "#121c2a",
+            "primary-fixed-dim": "#91d78a",
+            "on-tertiary-container": "#ffb579",
+            "on-primary-fixed-variant": "#0c5216",
+            "tertiary-container": "#7e4200",
+            "tertiary-fixed-dim": "#ffb77d",
+            "tertiary-fixed": "#ffdcc3",
+            "surface-dim": "#d0dbed",
+            "surface-container-low": "#eff4ff",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-variant": "#d9e3f6",
+            "inverse-primary": "#91d78a",
+            "secondary-fixed-dim": "#88d982",
+            "on-background": "#121c2a",
+            "surface-container": "#e6eeff",
+            "on-surface-variant": "#41493e",
+            "primary-fixed": "#acf4a4",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#002204",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#dee9fc",
+            "outline": "#717a6d",
+            "surface-tint": "#2a6b2c",
+            "surface-container-highest": "#d9e3f6",
+            "on-error-container": "#93000a",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "on-secondary-container": "#217128",
+            "background": "#f8f9ff",
+            "on-secondary-fixed-variant": "#005312",
+            "secondary-fixed": "#a3f69c",
+            "secondary": "#1b6d24",
+            "on-primary": "#ffffff",
+            "outline-variant": "#c0c9bb",
+            "surface": "#f8f9ff",
+            "on-error": "#ffffff",
+            "primary-container": "#1b5e20",
+            "on-primary-fixed": "#002203",
+            "tertiary": "#5c2f00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "0.75rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Roboto Flex"],
+            "headline-md": ["Roboto Flex"],
+            "display-lg-mobile": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "body-lg": ["Roboto Flex"],
+            "headline-sm": ["Roboto Flex"],
+            "title-lg": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "label-lg": ["Roboto Flex"],
+            "headline-lg": ["Roboto Flex"],
+            "display-lg": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "title-md": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-lg": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    @keyframes progressGlow {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(30%); }
+      100% { transform: translateX(200%); }
+    }
+    .animate-progress {
+      animation: progressGlow 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.2; transform: scale(0.98); }
+      50% { opacity: 0.6; transform: scale(1.04); }
+    }
+    .animate-pulse-ring {
+      animation: pulseRing 3.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex items-center justify-center p-0 m-0 overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container font-body-md text-body-md">
+<!-- Mobile Viewport Shell (390px class frame on desktop, responsive fluid on mobile) -->
+<main class="w-full max-w-[430px] h-screen max-h-[920px] bg-surface-bright flex flex-col justify-between items-center relative overflow-hidden shadow-2xl md:rounded-[2rem] border border-outline-variant/30">
+<!-- Top System Telemetry / Network Bar (Agritech Field Edge status) -->
+<header class="w-full pt-4 px-margin flex items-center justify-between z-10 select-none">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-outline-variant/50 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="w-2 h-2 rounded-full bg-secondary absolute"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-tight ml-1">FIELD TELEMETRY READY</span>
+</div>
+<!-- Subtle Bilingual Switcher indicator -->
+<div class="flex items-center gap-1.5 bg-surface-container-lowest/90 px-2.5 py-1 rounded-full border border-outline-variant/40 shadow-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="translate">translate</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">English</span>
+<span class="text-outline-variant text-[10px]">|</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer">தமிழ்</span>
+</div>
+</header>
+<!-- Ambient Agronomic Precision Background Geometry -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+<div class="w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl animate-pulse-ring"></div>
+<div class="absolute w-96 h-96 rounded-full border border-outline-variant/20"></div>
+<div class="absolute w-[440px] h-[440px] rounded-full border border-dashed border-outline-variant/20"></div>
+</div>
+<!-- Center Hero Section: Brand Emblem & Identity -->
+<section class="flex flex-col items-center text-center px-margin z-10 my-auto">
+<!-- Precision Agronomic Leaf & Sensor Emblem -->
+<div class="relative mb-space-lg flex items-center justify-center">
+<!-- Structural Concentric Node Lines -->
+<div class="absolute inset-0 -m-3 rounded-2xl bg-secondary-container/30 rotate-6 transition-transform"></div>
+<div class="absolute inset-0 -m-1.5 rounded-2xl bg-surface-container border border-outline-variant/40 -rotate-3 shadow-sm"></div>
+<!-- Main Emblem Core Plate -->
+<div class="relative w-24 h-24 rounded-2xl bg-surface-container-lowest border border-outline-variant shadow-md flex items-center justify-center p-3">
+<div class="w-full h-full rounded-xl bg-gradient-to-br from-primary-container via-secondary to-primary flex items-center justify-center relative overflow-hidden shadow-inner">
+<!-- Diagonal Tech Grid Pattern -->
+<div class="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:8px_8px]"></div>
+<!-- Stylized Dual Leaf & Telemetry Node Glyph -->
+<div class="relative flex items-center justify-center">
+<span class="material-symbols-outlined text-[44px] text-on-primary" data-icon="agriculture" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<div class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-secondary-container border-2 border-primary-container rounded-full flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-time Active Sensor Signal Badge -->
+<div class="absolute -bottom-2 bg-surface-container-lowest border border-outline-variant shadow-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[12px]" data-icon="sensors" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">IoT ACTIVE</span>
+</div>
+</div>
+<!-- Application Title: Material 3 Utilitarian Sans -->
+<h1 class="font-headline-lg text-headline-lg tracking-tight text-primary font-extrabold uppercase mb-space-xs">
+        Smart Crop Care
+      </h1>
+<!-- AI Agronomic Subtitle Badge -->
+<div class="inline-flex items-center gap-1.5 bg-surface-container-low border border-outline-variant/60 rounded-full px-3 py-1 mb-space-md shadow-xs">
+<span class="material-symbols-outlined text-secondary text-[14px]" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">
+          AI-Based Crop Life Cycle Monitoring
+        </span>
+</div>
+<!-- Secondary Descriptor -->
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[280px] leading-relaxed">
+        Autonomous physiological stage detection, microclimate analysis &amp; precision field interventions
+      </p>
+<!-- Key Academic & Domain Framework Chips -->
+<div class="flex items-center justify-center gap-2 mt-4">
+<span class="font-label-sm text-label-sm bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant px-2.5 py-0.5 rounded-md shadow-xs">
+          Multi-Spectral Vision
+        </span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant px-2.5 py-0.5 rounded-md shadow-xs">
+          NPK Soil Sync
+        </span>
+</div>
+</section>
+<!-- Bottom Section: Loading Engine State, Research Tag & Footer -->
+<footer class="w-full px-margin pb-6 z-10 flex flex-col items-center">
+<!-- Progress Bar & Engine Initialization Status -->
+<div class="w-full max-w-[280px] flex flex-col items-center mb-space-lg">
+<div class="flex items-center justify-between w-full mb-2">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium" id="init-status-text">
+              Initializing Agronomic AI Engine...
+            </span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold" id="init-percentage">68%</span>
+</div>
+<!-- Indeterminate Engineered Track -->
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden relative border border-outline-variant/30">
+<div class="h-full bg-gradient-to-r from-secondary to-primary-container rounded-full w-2/3 transition-all duration-300" id="progress-bar-fill"></div>
+<div class="absolute inset-0 bg-white/20 animate-progress"></div>
+</div>
+</div>
+<!-- Research Credential Card -->
+<div class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-3 shadow-sm mb-3 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/40 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Final Year Capstone Project</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">ICAR-Aligned Precision Agriculture</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-secondary-container/40 text-primary px-2 py-0.5 rounded border border-secondary/20 font-semibold">
+          v2.4.0
+        </span>
+</div>
+<!-- Autonomous Credit & Device Meta -->
+<div class="flex flex-col items-center text-center space-y-0.5">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[12px] text-secondary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-medium">
+            Smart Crop Care Autonomous Precision Farming
+          </span>
+</div>
+<p class="font-body-sm text-[10px] text-outline">
+          Edge Model Quantized for Offline Agronomic Diagnostics
+        </p>
+</div>
+</footer>
+</main>
+<script>
+    // Lightweight vanilla micro-interaction simulating initialization progression
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusText = document.getElementById('init-status-text');
+      const percentageText = document.getElementById('init-percentage');
+      const progressBar = document.getElementById('progress-bar-fill');
+
+      const stages = [
+        { pct: 24, label: "Calibrating Soil Moisture Telemetry..." },
+        { pct: 52, label: "Syncing Crop Phenology Database..." },
+        { pct: 78, label: "Initializing Agronomic AI Engine..." },
+        { pct: 94, label: "Verifying Field Mesh Gateway..." },
+        { pct: 100, label: "Precision Dashboard Ready" }
+      ];
+
+      let currentStage = 2;
+
+      setInterval(() => {
+        currentStage = (currentStage + 1) % stages.length;
+        const stage = stages[currentStage];
+        
+        if (percentageText && statusText && progressBar) {
+          percentageText.textContent = `${stage.pct}%`;
+          statusText.textContent = stage.label;
+          progressBar.style.width = `${stage.pct}%`;
+        }
+      }, 2400);
+    });
+  </script>
+</body></html>

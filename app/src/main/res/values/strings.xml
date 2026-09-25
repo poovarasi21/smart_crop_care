@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Crop Care</string>
+    <string name="app_tagline">AI-Based Crop Life Cycle Monitoring</string>
+    <string name="field_telemetry_ready">FIELD TELEMETRY READY</string>
+    <string name="capstone_title">Final Year Capstone Project</string>
+    <string name="capstone_subtitle">ICAR-Aligned Precision Agriculture</string>
+    <string name="app_version">v2.4.0</string>
+    <string name="offline_edge_model">Edge Model Quantized for Offline Agronomic Diagnostics</string>
+    <string name="autonomous_precision">Smart Crop Care Autonomous Precision Farming</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_crops">My Crops</string>
+    <string name="nav_activities">Activities</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Dashboard -->
+    <string name="greeting_prefix">Good Morning,</string>
+    <string name="farmer_name">Farmer Rajesh 👋</string>
+    <string name="location_madurai">Madurai, TN</string>
+    <string name="field_weather_telemetry">Field Weather Telemetry</string>
+    <string name="badge_realtime">Real-time</string>
+    <string name="weather_temp_label">Temp</string>
+    <string name="weather_humidity_label">Humidity</string>
+    <string name="weather_rain_label">Rain Prob</string>
+    <string name="weather_wind_label">Wind</string>
+    <string name="weather_alert_text">High humidity &amp; rain expected by 3 PM. Postpone foliar spraying &amp; check okra for powdery mildew.</string>
+
+    <string name="action_add_crop">+ Add New Crop</string>
+    <string name="action_add_crop_desc">Register new planting &amp; start tracking</string>
+    <string name="my_active_crops">My Active Crops</string>
+    <string name="fields_active_count">3 Fields Active</string>
+    <string name="todays_activities">Today\'s Farm Activities</string>
+    <string name="activities_completed_fraction">1 of 3 Completed</string>
+
+    <!-- Bento Services -->
+    <string name="quick_diagnostics_title">Quick Diagnostics &amp; Services</string>
+    <string name="ai_agronomy_badge">AI Agronomy</string>
+    <string name="service_ai_scan">AI Leaf Scan</string>
+    <string name="service_ai_scan_desc">Instant pest &amp; fungal infection detection</string>
+    <string name="service_water_log">Water Log</string>
+    <string name="service_water_log_desc">Drip schedule</string>
+    <string name="service_disease_guide">Disease Guide</string>
+    <string name="service_disease_guide_desc">Tamil Nadu DB</string>
+    <string name="service_crop_passport">Crop Passport</string>
+    <string name="service_crop_passport_desc">Traceability</string>
+    <string name="service_expense_log">Expense Log</string>
+    <string name="service_expense_log_desc">Inputs &amp; Yield</string>
+
+    <!-- Crop Overview -->
+    <string name="crop_overview_title">Tomato — Plot A</string>
+    <string name="crop_plot_zone">Zone North-2 • Bed 04</string>
+    <string name="variety_arka_rakshak">Arka Rakshak</string>
+    <string name="scientific_tomato">Solanum lycopersicum</string>
+    <string name="hybrid_badge">F1 Hybrid Variety</string>
+    <string name="planting_date_label">Planting Date</string>
+    <string name="crop_age_label">Crop Age (DAP)</string>
+    <string name="flowering_stage">Flowering Stage</string>
+    <string name="stage_completion">Stage Completion: 65%</string>
+    <string name="harvest_countdown">Harvest in 28d</string>
+    <string name="priority_task_today">Priority Task • Today</string>
+    <string name="flower_drop_alert_title">Flower Drop Prevention Alert</string>
+    <string name="flower_drop_alert_desc">Optimal temperature range maintained. Apply micronutrient foliar spray (Boron &amp; Zinc) between 4 PM - 6 PM to prevent flower shedding and accelerate ovary fertilization.</string>
+    <string name="btn_mark_done">Mark Activity Done</string>
+    <string name="btn_snooze">Snooze 1h</string>
+    <string name="field_operations">Field Operations</string>
+    <string name="updated_recently">Updated 12m ago</string>
+    <string name="btn_add_daily_log">Add Daily Log</string>
+    <string name="btn_scan_leaf_ai">Scan Leaf with AI</string>
+
+    <!-- AI Leaf Detection -->
+    <string name="disease_detection_title">AI Disease Detection</string>
+    <string name="ai_model_version">Powered by Agronomy Vision AI Model v2.4</string>
+    <string name="field_capture_protocol_title">Field Capture Protocol</string>
+    <string name="field_capture_protocol_desc">Upload or capture a clear photo of an infected or discolored leaf in natural daylight for instant diagnosis.</string>
+    <string name="target_crop_category">Target Crop Category</string>
+    <string name="btn_take_photo">Take Photo</string>
+    <string name="btn_upload_gallery">Upload from Gallery</string>
+    <string name="pathology_identified">Pathology Identified</string>
+    <string name="early_blight_title">Early Blight (Alternaria solani) Detected</string>
+    <string name="early_blight_subtitle">Fungal infection prevalent in humid night/warm day cycles</string>
+    <string name="confidence_meter">Confidence Meter</string>
+    <string name="severity_level">Severity Level</string>
+    <string name="stage_1_mild">Stage 1: Mild</string>
+    <string name="observed_symptoms">Observed Symptoms</string>
+    <string name="recommended_treatment">Recommended Treatment Options</string>
+    <string name="cultural_organic_mgmt">Cultural &amp; Organic Management</string>
+    <string name="targeted_chemical_spray">Targeted Spray Recommendation</string>
+    <string name="disclaimer_icar">AI diagnosis provides decision assistance based on ICAR field research. Confirm physical symptoms before chemical application.</string>
+    <string name="btn_save_medical_history">Save to Crop Medical History</string>
+    <string name="btn_share_kvk">Share Report with Agri Officer / KVK</string>
+
+    <!-- Digital Crop Passport -->
+    <string name="passport_title">Digital Crop Passport</string>
+    <string name="passport_subtitle">Smart Crop Care • Official Verification</string>
+    <string name="btn_export_pdf">Export PDF / Print</string>
+    <string name="cert_official_registry">Official Digital Crop Registry</string>
+    <string name="cert_certified_active">Certified Active Lifecycle</string>
+    <string name="kpi_title">Key Performance Indicators</string>
+    <string name="kpi_health_index">Health Index</string>
+    <string name="kpi_estimated_yield">Estimated Yield</string>
+    <string name="kpi_total_investment">Total Investment</string>
+    <string name="kpi_projected_revenue">Projected Revenue</string>
+    <string name="audit_trail_title">Full Lifecycle Audit Trail Summary</string>
+    <string name="audit_trail_subtitle">Traceable agronomic interventions and verified digital telemetry</string>
+    <string name="market_linkage_title">Market Linkage &amp; Harvest Readiness</string>
+    <string name="btn_share_buyer">Share with Bank / Buyer / FPO</string>
+
+    <!-- Auth & Profile Additions -->
+    <string name="login_email">Email Address</string>
+    <string name="login_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_register_prompt">Don\'t have an account? Register</string>
+    <string name="register_title">Create Account</string>
+    <string name="register_name">Full Name</string>
+    <string name="register_button">Register</string>
+    <string name="register_login_prompt">Already have an account? Login</string>
+
+    <string name="profile_preferences">Preferences &amp; System</string>
+    <string name="profile_language">App Language</string>
+    <string name="profile_lang_toggle">English / தமிழ்</string>
+    <string name="profile_ai_engine">Agronomy AI Vision Engine</string>
+    <string name="profile_ai_desc">Version 2.4.0 (Edge Quantized, ICAR-IIHR Calibrated)</string>
+    <string name="profile_storage">Local Storage &amp; Persistence</string>
+    <string name="profile_storage_desc">Room SQLite persistence active with full offline support</string>
+    <string name="profile_logout">Logout</string>
+    <string name="profile_certified">Certified Precision Farmer</string>
+    <string name="location_unknown">Unknown location</string>
+    <string name="location_unavailable">Location unavailable</string>
+    <string name="location_failed">Location failed</string>
+    <string name="location_permission_denied">Permission denied</string>
+    <string name="location_rationale">Location permission is required to show accurate weather and field data.</string>
+
+    <string name="add_crop_title">Register New Crop</string>
+    <string name="add_crop_subtitle">Add crop plot to start autonomous lifecycle monitoring</string>
+    <string name="add_crop_name_hint">Crop (e.g. Tomato, Chilli, Cotton, Okra)</string>
+    <string name="add_crop_variety_hint">Variety (e.g. Arka Rakshak F1)</string>
+    <string name="add_crop_plot_hint">Plot (e.g. Plot D)</string>
+    <string name="add_crop_acreage_hint">Acreage (Acres)</string>
+    <string name="add_crop_soil_hint">Soil Type</string>
+    <string name="add_crop_save_button">Register Crop Plot</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Stitch Design Tokens for Smart Crop Care -->
+    <color name="primary">#1B5E20</color>
+    <color name="primary_dark">#00450D</color>
+    <color name="primary_container">#1B5E20</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#90D689</color>
+    <color name="primary_fixed">#ACF4A4</color>
+    <color name="primary_fixed_dim">#91D78A</color>
+
+    <color name="secondary">#2E7D32</color>
+    <color name="secondary_container">#A0F399</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_container">#217128</color>
+    <color name="secondary_fixed">#A3F69C</color>
+
+    <color name="tertiary">#D97706</color>
+    <color name="tertiary_container">#7E4200</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="on_tertiary_container">#FFB579</color>
+    <color name="tertiary_fixed">#FFDCC3</color>
+    <color name="on_tertiary_fixed">#2F1500</color>
+
+    <color name="background">#F8FAF6</color>
+    <color name="surface">#F8F9FF</color>
+    <color name="surface_bright">#F8F9FF</color>
+    <color name="surface_container_lowest">#FFFFFF</color>
+    <color name="surface_container_low">#EFF4FF</color>
+    <color name="surface_container">#E6EEFF</color>
+    <color name="surface_container_high">#DEE9FC</color>
+    <color name="surface_container_highest">#D9E3F6</color>
+
+    <color name="outline">#717A6D</color>
+    <color name="outline_variant">#D6DEC9</color>
+    <color name="on_surface">#121C2A</color>
+    <color name="on_surface_variant">#41493E</color>
+
+    <color name="error">#BA1A1A</color>
+    <color name="error_container">#FFDAD6</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_error_container">#93000A</color>
+
+    <!-- Agronomic Semantic Accents -->
+    <color name="warning_amber_bg">#FFFBEB</color>
+    <color name="warning_amber_border">#FCD34D</color>
+    <color name="warning_amber_text">#92400E</color>
+    <color name="warning_amber_badge">#FEF3C7</color>
+
+    <color name="water_blue">#0284C7</color>
+    <color name="water_blue_bg">#E0F2FE</color>
+    <color name="water_blue_badge">#BAE6FD</color>
+
+    <color name="fertilizer_purple">#7E22CE</color>
+    <color name="fertilizer_purple_bg">#F3E8FF</color>
+
+    <color name="healthy_green">#16A34A</color>
+    <color name="healthy_green_bg">#DCFCE7</color>
+</resources>

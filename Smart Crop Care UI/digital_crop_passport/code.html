@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Crop Passport &amp; Harvest Analytics - Smart Crop Care</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Roboto Flex -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#0c5216",
+            "tertiary": "#5c2f00",
+            "primary-fixed": "#acf4a4",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdcc3",
+            "surface-container-low": "#eff4ff",
+            "surface-tint": "#2a6b2c",
+            "error": "#ba1a1a",
+            "on-primary-container": "#90d689",
+            "on-secondary-fixed": "#002204",
+            "surface-container-highest": "#d9e3f6",
+            "inverse-primary": "#91d78a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#e6eeff",
+            "tertiary-container": "#7e4200",
+            "primary-fixed-dim": "#91d78a",
+            "primary-container": "#1b5e20",
+            "on-tertiary-fixed": "#2f1500",
+            "outline-variant": "#c0c9bb",
+            "on-background": "#121c2a",
+            "inverse-on-surface": "#eaf1ff",
+            "secondary-fixed": "#a3f69c",
+            "on-secondary-fixed-variant": "#005312",
+            "surface-container-high": "#dee9fc",
+            "on-tertiary-container": "#ffb579",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#002203",
+            "secondary-fixed-dim": "#88d982",
+            "on-surface-variant": "#41493e",
+            "secondary-container": "#a0f399",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "on-surface": "#121c2a",
+            "surface": "#f8f9ff",
+            "tertiary-fixed-dim": "#ffb77d",
+            "outline": "#717a6d",
+            "secondary": "#1b6d24",
+            "inverse-surface": "#27313f",
+            "primary": "#00450d",
+            "surface-dim": "#d0dbed",
+            "background": "#f8f9ff",
+            "surface-variant": "#d9e3f6",
+            "on-secondary-container": "#217128",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-tablet": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "0.75rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Roboto Flex"],
+            "body-sm": ["Roboto Flex"],
+            "label-md": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "title-lg": ["Roboto Flex"],
+            "title-md": ["Roboto Flex"],
+            "display-lg": ["Roboto Flex"],
+            "headline-sm": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "headline-lg": ["Roboto Flex"],
+            "label-lg": ["Roboto Flex"],
+            "display-lg-mobile": ["Roboto Flex"],
+            "headline-md": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "title-lg": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "title-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Roboto Flex', sans-serif;
+      background-color: #F8FAF6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .watermark-pattern {
+      background-image: radial-gradient(#1b5e20 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      opacity: 0.04;
+    }
+  </style>
+</head>
+<body class="text-on-surface min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/40 shadow-none">
+<div class="max-w-4xl mx-auto px-margin md:px-margin-tablet h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button aria-label="Back" class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div>
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight block">Digital Crop Passport</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Smart Crop Care • Official Verification</span>
+</div>
+</div>
+<!-- Export PDF / Print Button -->
+<button class="h-10 px-3 md:px-4 flex items-center gap-2 rounded-lg bg-surface-container text-primary font-label-lg text-label-lg hover:bg-surface-container-high active:scale-95 transition-all border border-outline-variant/30" onclick="window.print()" type="button">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">picture_as_pdf</span>
+<span class="hidden sm:inline font-medium">Export PDF / Print</span>
+<span class="sm:hidden font-medium">Export</span>
+</button>
+</div>
+</header>
+<!-- MAIN CANVAS CONTAINER -->
+<main class="flex-1 max-w-4xl w-full mx-auto px-margin md:px-margin-tablet py-space-md space-y-space-md pb-28">
+<!-- PASSPORT HEADER & IDENTITY CERTIFICATE CARD -->
+<section class="relative bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-sm p-4 md:p-6 overflow-hidden">
+<!-- Ambient Watermark & Decorative Badge -->
+<div class="absolute inset-0 watermark-pattern pointer-events-none"></div>
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Certificate Header Banner -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-outline-variant/40 relative z-10">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-surface-container-lowest flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Official Digital Crop Registry</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                Certified Active Lifecycle
+              </span>
+</div>
+<p class="font-title-md text-title-md text-on-surface">Certificate ID: <span class="font-mono text-primary font-bold">SCC-TN-2026-TM882</span></p>
+</div>
+</div>
+<!-- QR Verification Badge -->
+<div class="flex items-center gap-3 bg-surface-container-low/70 px-3 py-1.5 rounded-lg border border-outline-variant/30 self-start sm:self-auto">
+<div class="w-10 h-10 bg-surface-container-lowest p-1 rounded border border-outline-variant flex items-center justify-center shadow-xs">
+<!-- Vector QR Matrix Representation -->
+<svg class="w-full h-full text-primary" fill="currentColor" viewbox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h4v2h-4v-2zm-4 0h2v4h-2v-4zm4 4h4v4h-4v-4zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm-6-2h2v4h-2v-4zm2 2h2v2h-2v-2z"></path>
+</svg>
+</div>
+<div class="text-left">
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Govt / Mandi</p>
+<p class="font-label-md text-label-md text-primary font-bold">Scan to Verify</p>
+</div>
+</div>
+</div>
+<!-- Identity Metadata Detail Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 pt-4 relative z-10">
+<!-- Botanical Image Thumbnail -->
+<div class="md:col-span-3 rounded-lg overflow-hidden border border-outline-variant/40 aspect-[4/3] md:aspect-auto relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="High quality close up photograph of rich vibrant red Arka Rakshak tomatoes ripening gracefully on vigorous green vines with rich foliage under natural morning agricultural sunlight. The composition radiates freshness, high crop vigour, and precision farming excellence with clean natural lighting and deep organic green tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAKpFT9KXREdbG5JaY-DOv355mixltiuxUKydYvgOPLY_wr1IvmxSx81v-D3SA28dQ9sg5pvonpLgACQU468gAJoyAsyh-B8LFwBvFVIvSvyZMApAm2in6nFi27WGMgfI3kCG3IaVphVIiRuwZ5DCpFqNaLVjR7dsJWf4zce7RqPHYtrUkY3g8RY1XzwCKfRCkOrAA-BTi8t4balXN8dRptb9rKMxWVjmIhbeZu74HOIOWRIiGhyrZBw"/>
+<span class="absolute bottom-2 left-2 bg-inverse-surface/80 text-surface-container-lowest px-2 py-0.5 rounded text-[10px] font-medium tracking-wide">
+            ICAR-IIHR Verified
+          </span>
+</div>
+<!-- Identity Data Sheet -->
+<div class="md:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Crop &amp; Variety</span>
+<p class="font-title-lg text-title-lg text-on-surface font-semibold">Tomato <span class="font-body-sm text-body-sm text-on-surface-variant italic">(Solanum lycopersicum)</span></p>
+<p class="font-label-md text-label-md text-primary font-medium mt-0.5">Arka Rakshak • F1 Hybrid</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Plot Location &amp; Pedology</span>
+<p class="font-title-lg text-title-lg text-on-surface font-semibold">Plot A - North Acres</p>
+<p class="font-label-md text-label-md text-on-surface-variant mt-0.5">1.5 Acres • Red Sandy Loam Soil (pH 6.8)</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Sowing &amp; Inception</span>
+<p class="font-title-md text-title-md text-on-surface font-medium">01 Sep 2026</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Drip Fertigation Deployed</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Lead Agronomist &amp; Issuer</span>
+<p class="font-title-md text-title-md text-on-surface font-medium">Dr. V. Ramanathan</p>
+<p class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span> Certified Agronomic Standard
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- KEY PERFORMANCE INDICATORS (2x2 Grid) -->
+<section>
+<div class="flex items-center justify-between mb-2 px-1">
+<h2 class="font-title-lg text-title-lg text-primary font-bold">Key Performance Indicators</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Real-time Telemetry Synced</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Metric 1: Overall Health Index -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">eco</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Health Index</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">88 <span class="font-title-md text-title-md text-on-surface-variant font-normal">/ 100</span></span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+              Grade A - Prime Vigour
+            </span>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>NDVI Bio-spectral Index</span>
+<span class="font-mono text-primary font-semibold">0.78 (Optimum)</span>
+</div>
+</div>
+<!-- Metric 2: Estimated Yield -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">agriculture</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Estimated Yield</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">18.5 <span class="font-title-md text-title-md text-on-surface-variant font-normal">T / Acre</span></span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">
+              600 - 750 Crates
+            </span>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Estimated Total Output</span>
+<span class="font-mono text-primary font-semibold">~27.75 Metric Tonnes</span>
+</div>
+</div>
+<!-- Metric 3: Total Investment -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-size: 20px;">account_balance_wallet</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Total Investment</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">₹14,250</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium">
+              Verified Ledger
+            </span>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="truncate">Seeds ₹1.8k • Fert ₹4.2k • Drip/Lab ₹8.25k</span>
+<span class="font-mono text-on-surface font-medium shrink-0 ml-2">100% Settled</span>
+</div>
+</div>
+<!-- Metric 4: Projected Revenue -->
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/60 shadow-sm flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">trending_up</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Projected Revenue</span>
+<span class="font-headline-lg text-headline-lg text-primary font-extrabold tracking-tight">₹42,000</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-extrabold">
+              ROI: +194%
+            </span>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Net Projected Profit</span>
+<span class="font-mono text-primary font-bold">₹27,750</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FULL LIFECYCLE AUDIT TRAIL SUMMARY -->
+<section class="bg-surface-container-lowest rounded-xl p-4 md:p-5 border border-outline-variant/60 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-4 pb-3 border-b border-outline-variant/40">
+<div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold">Full Lifecycle Audit Trail Summary</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Traceable agronomic interventions and verified digital telemetry</p>
+</div>
+<span class="self-start sm:self-auto px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">
+          Immutable Cloud Sync
+        </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Audit 1: Water Sessions -->
+<div class="p-3.5 rounded-lg bg-surface-container-low/60 border border-outline-variant/40 flex flex-col justify-between">
+<div class="flex items-center gap-2.5 mb-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-size: 18px;">water_drop</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Irrigation Logs</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">24 Sessions</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Drip Efficiency</span>
+<span class="font-mono font-bold text-secondary">94% Target</span>
+</div>
+</div>
+<!-- Audit 2: Nutrient Applications -->
+<div class="p-3.5 rounded-lg bg-surface-container-low/60 border border-outline-variant/40 flex flex-col justify-between">
+<div class="flex items-center gap-2.5 mb-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 18px;">compost</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Fertigation</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">6 Doses</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Adherence</span>
+<span class="font-mono font-bold text-primary">100% On-Time</span>
+</div>
+</div>
+<!-- Audit 3: AI Diagnostics -->
+<div class="p-3.5 rounded-lg bg-surface-container-low/60 border border-outline-variant/40 flex flex-col justify-between">
+<div class="flex items-center gap-2.5 mb-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-size: 18px;">biotech</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">AI Health Scans</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">5 Deep Scans</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Early Blight</span>
+<span class="font-mono font-semibold text-secondary">Resolved • Healthy</span>
+</div>
+</div>
+<!-- Audit 4: Geotagged Logs -->
+<div class="p-3.5 rounded-lg bg-surface-container-low/60 border border-outline-variant/40 flex flex-col justify-between">
+<div class="flex items-center gap-2.5 mb-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 18px;">photo_camera</span>
+</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Verified Media</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">14 Photos</span>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Geo-stamp</span>
+<span class="font-mono font-bold text-primary">Verified GPS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MARKET LINKAGE & HARVEST READINESS INDICATOR -->
+<section class="bg-surface-container-lowest rounded-xl p-4 md:p-5 border border-outline-variant/60 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">storefront</span>
+<h2 class="font-title-lg text-title-lg text-primary font-bold">Market Linkage &amp; Harvest Readiness</h2>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+          High Market Demand
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Countdown Box -->
+<div class="p-4 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-surface-container-lowest flex items-center justify-center font-extrabold text-xl shrink-0">
+            14
+          </div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Days to Harvest</span>
+<p class="font-title-lg text-title-lg text-on-surface font-bold">First Flush Readiness</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Expected Picking: 15 Oct 2026</p>
+</div>
+</div>
+<!-- Mandi Benchmark -->
+<div class="p-4 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Mandi Price Benchmark</span>
+<span class="text-secondary font-label-sm text-label-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% this week
+            </span>
+</div>
+<div class="my-1">
+<span class="font-headline-md text-headline-md text-on-surface font-extrabold">₹24 - ₹28</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant"> / kg (APMC Kolar)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Trend: Favorable pre-festival peak</p>
+</div>
+<!-- Quality Grade Grading -->
+<div class="p-4 rounded-xl bg-surface-container-low/50 border border-outline-variant/40 flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Certified Quality Grade</span>
+<div class="my-1">
+<p class="font-title-lg text-title-lg text-primary font-bold">Grade-1 Commercial</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Premium Export &amp; Local Mandi</p>
+</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Uniform Size • TSS 4.8° Brix</span>
+</div>
+</div>
+</div>
+</section>
+<!-- OFFICIAL VERIFICATION ENDORSEMENT FOOTER CARD -->
+<div class="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-primary shrink-0 shadow-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">ICAR &amp; Agronomy Agritech Seal</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Validated under Smart Crop Care Autonomous Precision Agronomy Framework v4.2</p>
+</div>
+</div>
+<div class="font-mono text-xs text-on-surface-variant/80 border-t sm:border-t-0 sm:border-l border-outline-variant/50 pt-2 sm:pt-0 sm:pl-4">
+        HASH: 8f4e-2026-arka-9821a<br/>
+        TIMESTAMP: 2026-10-01T08:30Z
+      </div>
+</div>
+</main>
+<!-- STICKY ACTION BAR -->
+<aside aria-label="Passport Actions" class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/50 px-margin md:px-margin-tablet py-3">
+<div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+<!-- Download PDF Primary Action -->
+<button class="w-full sm:flex-1 h-12 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-sm hover:opacity-95 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+<span>Download Official Crop Passport PDF</span>
+</button>
+<!-- Share Secondary Action -->
+<button class="w-full sm:w-auto px-6 h-12 rounded-lg bg-surface-container text-primary border border-outline-variant/40 font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">share</span>
+<span>Share with Bank / Buyer / FPO</span>
+</button>
+</div>
+</aside>
+</body></html>

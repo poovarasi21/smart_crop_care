@@ -74,6 +74,11 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ELCOT\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\bb32101ef4ca9f9f13331e0d9795459a\workspace\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\5a2f6f9122df2ab51186007d00a376c0\workspace\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\d1535ed520af05292491f311a89e6baa\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [org.tensorflow:tensorflow-lite-support:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\a466b43d46f45ad49b30a096acecfebd\workspace\transformed\tensorflow-lite-support-0.4.4\AndroidManifest.xml:2:1-5:12
+MERGED from [org.tensorflow:tensorflow-lite:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\ba71650ec2c619a21b95e737a73de0cf\workspace\transformed\tensorflow-lite-2.14.0\AndroidManifest.xml:2:1-11:12
+MERGED from [org.tensorflow:tensorflow-lite-support-api:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\0ea0a318b44c8d9ce8111d10e03871e6\workspace\transformed\tensorflow-lite-support-api-0.4.4\AndroidManifest.xml:2:1-5:12
+MERGED from [org.tensorflow:tensorflow-lite-api:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\2baf95c031cabed9dd467f32851a4f20\workspace\transformed\tensorflow-lite-api-2.14.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\f90ffa30f8aee9fbaf1c0c9b9f8e32ff\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:2:1-9:12
 	package
 		INJECTED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -149,6 +154,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ELCOT\.gradle\cach
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\8cf37d07a861caa7feb6a301c64fb2c8\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\459ee0cb75c46df2eb9d57ba2b2285df\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\459ee0cb75c46df2eb9d57ba2b2285df\workspace\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [org.tensorflow:tensorflow-lite:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\ba71650ec2c619a21b95e737a73de0cf\workspace\transformed\tensorflow-lite-2.14.0\AndroidManifest.xml:9:5-20
+MERGED from [org.tensorflow:tensorflow-lite:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\ba71650ec2c619a21b95e737a73de0cf\workspace\transformed\tensorflow-lite-2.14.0\AndroidManifest.xml:9:5-20
+MERGED from [org.tensorflow:tensorflow-lite-api:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\2baf95c031cabed9dd467f32851a4f20\workspace\transformed\tensorflow-lite-api-2.14.0\AndroidManifest.xml:9:5-20
+MERGED from [org.tensorflow:tensorflow-lite-api:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\2baf95c031cabed9dd467f32851a4f20\workspace\transformed\tensorflow-lite-api-2.14.0\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\f90ffa30f8aee9fbaf1c0c9b9f8e32ff\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\f90ffa30f8aee9fbaf1c0c9b9f8e32ff\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:7:5-20
 	android:extractNativeLibs
 		INJECTED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
@@ -363,6 +374,16 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\ELCOT\.gradle\caches\9.1.0\tra
 MERGED from [androidx.print:print:1.0.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\5a2f6f9122df2ab51186007d00a376c0\workspace\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\d1535ed520af05292491f311a89e6baa\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\d1535ed520af05292491f311a89e6baa\workspace\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [org.tensorflow:tensorflow-lite-support:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\a466b43d46f45ad49b30a096acecfebd\workspace\transformed\tensorflow-lite-support-0.4.4\AndroidManifest.xml:4:3-71
+MERGED from [org.tensorflow:tensorflow-lite-support:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\a466b43d46f45ad49b30a096acecfebd\workspace\transformed\tensorflow-lite-support-0.4.4\AndroidManifest.xml:4:3-71
+MERGED from [org.tensorflow:tensorflow-lite:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\ba71650ec2c619a21b95e737a73de0cf\workspace\transformed\tensorflow-lite-2.14.0\AndroidManifest.xml:6:5-7:38
+MERGED from [org.tensorflow:tensorflow-lite:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\ba71650ec2c619a21b95e737a73de0cf\workspace\transformed\tensorflow-lite-2.14.0\AndroidManifest.xml:6:5-7:38
+MERGED from [org.tensorflow:tensorflow-lite-support-api:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\0ea0a318b44c8d9ce8111d10e03871e6\workspace\transformed\tensorflow-lite-support-api-0.4.4\AndroidManifest.xml:4:3-71
+MERGED from [org.tensorflow:tensorflow-lite-support-api:0.4.4] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\0ea0a318b44c8d9ce8111d10e03871e6\workspace\transformed\tensorflow-lite-support-api-0.4.4\AndroidManifest.xml:4:3-71
+MERGED from [org.tensorflow:tensorflow-lite-api:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\2baf95c031cabed9dd467f32851a4f20\workspace\transformed\tensorflow-lite-api-2.14.0\AndroidManifest.xml:6:5-7:38
+MERGED from [org.tensorflow:tensorflow-lite-api:2.14.0] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\2baf95c031cabed9dd467f32851a4f20\workspace\transformed\tensorflow-lite-api-2.14.0\AndroidManifest.xml:6:5-7:38
+MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\f90ffa30f8aee9fbaf1c0c9b9f8e32ff\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\ELCOT\.gradle\caches\9.1.0\transforms\f90ffa30f8aee9fbaf1c0c9b9f8e32ff\workspace\transformed\image-1.0.0-beta1\AndroidManifest.xml:5:5-44
 	android:targetSdkVersion
 		INJECTED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml
 	android:minSdkVersion

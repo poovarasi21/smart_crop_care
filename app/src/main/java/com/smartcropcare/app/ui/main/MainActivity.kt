@@ -12,6 +12,7 @@ import com.smartcropcare.app.ui.activities.ActivitiesFragment
 import com.smartcropcare.app.ui.crops.CropListFragment
 import com.smartcropcare.app.ui.home.HomeFragment
 import com.smartcropcare.app.ui.profile.ProfileFragment
+import com.smartcropcare.app.ui.location.LocationSelectDialog
 import com.smartcropcare.app.utils.LocaleHelper
 import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.launch
@@ -80,6 +81,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchLocation() {
+        val sessionManager = SessionManager(this)
+        
+        // If user manually selected a location, use it consistently and DO NOT overwrite with GPS!
+        if (!sessionManager.isCurrentLocationMode()) {
+            val savedLoc = sessionManager.getLocation()
+            if (savedLoc != null) {
+                binding.tvLocation.text = "📍 ${savedLoc.getFormattedName()}"
+                notifyHomeFragmentLocationChanged(savedLoc.latitude, savedLoc.longitude)
+                return
+            }
+        }
+
+        // Current Device GPS Location Mode
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -93,11 +107,12 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 updateLocationUI(it)
+                notifyHomeFragmentLocationChanged(it.latitude, it.longitude)
             } ?: run {
-                binding.tvLocation.text = "Location unavailable"
+                binding.tvLocation.text = getString(R.string.location_unavailable)
             }
         }.addOnFailureListener {
-            binding.tvLocation.text = "Location failed"
+            binding.tvLocation.text = getString(R.string.location_failed)
         }
     }
 
@@ -107,15 +122,25 @@ class MainActivity : AppCompatActivity() {
             val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
             if (addresses != null && addresses.isNotEmpty()) {
                 val address = addresses[0]
-                val city = address.locality ?: address.subAdminArea ?: address.adminArea
-                val state = address.adminArea
-                binding.tvLocation.text = "$city, $state"
+                val city = address.locality ?: address.subAdminArea ?: address.adminArea ?: ""
+                val state = address.adminArea ?: ""
+                binding.tvLocation.text = "📍 ${getString(R.string.city_state_format, city, state)}"
             } else {
-                binding.tvLocation.text = "Unknown location"
+                binding.tvLocation.text = getString(R.string.location_unknown)
             }
         } catch (e: Exception) {
-            binding.tvLocation.text = "${location.latitude.toString().take(6)}, ${location.longitude.toString().take(6)}"
+            binding.tvLocation.text = "📍 ${location.latitude.toString().take(6)}, ${location.longitude.toString().take(6)}"
         }
+    }
+
+    private fun notifyHomeFragmentLocationChanged(lat: Double, lon: Double) {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment)
+        val homeFragment = navHostFragment?.childFragmentManager?.fragments?.firstOrNull { it is HomeFragment } as? HomeFragment
+        val loc = Location("provider").apply {
+            latitude = lat
+            longitude = lon
+        }
+        homeFragment?.updateWeather(loc)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -136,6 +161,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupTopBarActions() {
+        binding.containerLocation.setOnClickListener {
+            LocationSelectDialog { locationData ->
+                fetchLocation()
+            }.show(supportFragmentManager, LocationSelectDialog.TAG)
+        }
+
         binding.btnLanguageToggle.setOnClickListener {
             val currentLang = LocaleHelper.getLanguage(this)
             val newLang = if (currentLang == "en") "ta" else "en"

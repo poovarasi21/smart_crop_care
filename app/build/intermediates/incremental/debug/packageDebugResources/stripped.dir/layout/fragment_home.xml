@@ -32,6 +32,15 @@
             android:textColor="@color/primary"
             android:textSize="22sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/home_subtitle"
+            android:textColor="@color/on_surface_variant"
+            android:textSize="12sp" />
+
         <!-- Weather Advisory Card -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.SmartCropCare.Card"
@@ -338,14 +347,30 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <!-- Active Crops RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvActiveCrops"
+        <!-- Active Crops Section Layout -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:nestedScrollingEnabled="false"
-            tools:itemCount="3" />
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvActiveCrops"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="3" />
+
+            <TextView
+                android:id="@+id/tvEmptyCrops"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="24dp"
+                android:visibility="gone"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/on_surface_variant"
+                android:text="@string/empty_crops_msg" />
+        </FrameLayout>
 
         <!-- "Today's Farm Activities" Section -->
         <com.google.android.material.card.MaterialCardView
@@ -392,13 +417,29 @@
                         android:textSize="11sp" />
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvActivities"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:nestedScrollingEnabled="false"
-                    tools:itemCount="3" />
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvActivities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:nestedScrollingEnabled="false"
+                        tools:itemCount="3" />
+
+                    <TextView
+                        android:id="@+id/tvEmptyActivities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:visibility="gone"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/on_surface_variant"
+                        android:text="@string/empty_activities_msg" />
+                </FrameLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

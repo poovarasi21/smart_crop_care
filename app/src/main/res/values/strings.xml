@@ -8,6 +8,7 @@
     <string name="app_version">v2.4.0</string>
     <string name="offline_edge_model">Edge Model Quantized for Offline Agronomic Diagnostics</string>
     <string name="autonomous_precision">Smart Crop Care Autonomous Precision Farming</string>
+    <string name="home_subtitle">Smart Crop Care – Your Complete Farm Assistant</string>
 
     <!-- Navigation -->
     <string name="nav_home">Home</string>
@@ -140,4 +141,37 @@
     <string name="add_crop_acreage_hint">Acreage (Acres)</string>
     <string name="add_crop_soil_hint">Soil Type</string>
     <string name="add_crop_save_button">Register Crop Plot</string>
+
+    <string name="fields_active_format">%1$d Fields Active</string>
+    <string name="activities_completed_format">%1$d of %2$d Completed</string>
+    <string name="scan_state_scanning">Scanning...</string>
+    <string name="scan_state_complete">Analysis Complete</string>
+    <string name="match_format">%1$d%% Match</string>
+    <string name="conf_format">%1$d%% Conf.</string>
+    <string name="profile_updated">Profile photo updated</string>
+    <string name="language_switched">Language switched to %1$s</string>
+    <string name="edit_profile_name">Edit Profile Name</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="city_state_format">%1$s, %2$s</string>
+    <string name="empty_crops_msg">No crops added yet.</string>
+    <string name="empty_activities_msg">No activities scheduled.</string>
+    <string name="greeting_format">Hi, %1$s 👋</string>
+
+    <!-- Disease AI Detection Localized Strings -->
+    <string name="ai_low_confidence_title">Uncertain Prediction</string>
+    <string name="ai_low_confidence_msg">Unable to confidently identify the disease. Please upload a clear leaf image.</string>
+    <string name="ai_safety_disclaimer">Use only according to the product label and local agricultural guidance.</string>
+    <string name="ai_model_missing_msg">Model file \'plant_disease_model.tflite\' is required in assets/ for TFLite edge inference.</string>
+    <string name="ai_no_image_msg">Please take or select a leaf photo first.</string>
+
+    <!-- Location Selection Strings -->
+    <string name="loc_dialog_title">Select Active Location</string>
+    <string name="loc_dialog_subtitle">Choose your farming location for accurate microclimate weather</string>
+    <string name="loc_use_current">Use Current Device GPS Location</string>
+    <string name="loc_or_search">— OR SEARCH ANY LOCATION —</string>
+    <string name="loc_search_hint">City or Region (e.g. Salem, Chennai, Delhi)</string>
+    <string name="loc_search_btn">Search</string>
+    <string name="loc_popular_hubs">Popular Agricultural Hubs</string>
+    <string name="loc_not_found">Location not found. Please check spelling.</string>
 </resources>

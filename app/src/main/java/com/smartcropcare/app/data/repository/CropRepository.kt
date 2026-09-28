@@ -13,7 +13,8 @@ class CropRepository(
     private val activityDao: FarmActivityDao,
     private val logDao: LogDao,
     private val diseaseRecordDao: DiseaseRecordDao,
-    private val expenseDao: ExpenseDao
+    private val expenseDao: ExpenseDao,
+    private val pestDao: PestDao
 ) {
     fun getAllActiveCrops(userId: Long): Flow<List<CropEntity>> = cropDao.getAllActiveCrops(userId)
     fun getAllActivities(userId: Long): Flow<List<FarmActivityEntity>> = activityDao.getAllActivities(userId)
@@ -90,6 +91,21 @@ class CropRepository(
 
     suspend fun getTotalExpense(cropId: Long): Double {
         return expenseDao.getTotalExpense(cropId) ?: 0.0
+    }
+
+    fun getPestRecords(cropId: Long): Flow<List<PestRecordEntity>> =
+        pestDao.getPestsByCropId(cropId)
+
+    suspend fun logPest(cropId: Long, pestName: String, damage: String, management: String, treatment: String): Long {
+        val record = PestRecordEntity(
+            cropId = cropId,
+            date = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault()).format(Date()),
+            pestName = pestName,
+            damageSymptoms = damage,
+            managementAction = management,
+            treatmentNotes = treatment
+        )
+        return pestDao.insertPest(record)
     }
 
     suspend fun getIrrigationCount(cropId: Long): Int = logDao.getIrrigationSessionCount(cropId)

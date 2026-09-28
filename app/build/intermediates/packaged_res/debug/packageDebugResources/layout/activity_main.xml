@@ -61,10 +61,14 @@
                     android:textSize="16sp" />
 
                 <LinearLayout
+                    android:id="@+id/containerLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="12dp"

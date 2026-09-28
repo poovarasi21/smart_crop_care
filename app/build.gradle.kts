@@ -72,4 +72,8 @@ dependencies {
     // ZXing for QR Code Generation in Digital Crop Passport
     implementation("com.google.zxing:core:3.5.3")
     implementation("com.google.android.gms:play-services-location:21.1.0")
+
+    // TensorFlow Lite for AI Leaf Disease Recognition
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
 }

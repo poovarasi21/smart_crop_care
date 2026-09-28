@@ -22,6 +22,8 @@ import kotlinx.coroutines.launch
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.ImageDecoder
+import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat
 
@@ -45,9 +47,8 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
             val bitmap = result.data?.extras?.get("data") as? Bitmap
             bitmap?.let {
                 binding.ivLeafPreview.setImageBitmap(it)
+                viewModel.startAnalysis(it)
             }
-            Toast.makeText(this, "AI Model not integrated. Showing mocked result.", Toast.LENGTH_LONG).show()
-            viewModel.startAnalysis()
         }
     }
 
@@ -56,9 +57,19 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let {
-            binding.ivLeafPreview.setImageURI(it)
-            Toast.makeText(this, "AI Model not integrated. Showing mocked result.", Toast.LENGTH_LONG).show()
-            viewModel.startAnalysis()
+            try {
+                binding.ivLeafPreview.setImageURI(it)
+                val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, it))
+                } else {
+                    @Suppress("DEPRECATION")
+                    MediaStore.Images.Media.getBitmap(contentResolver, it)
+                }
+                viewModel.startAnalysis(bitmap)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Toast.makeText(this, "Failed to decode leaf image.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -188,7 +199,7 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             viewModel.isAnalyzing.collect { isAnalyzing ->
-                binding.tvScanStateBadge.text = if (isAnalyzing) "Scanning..." else "Analysis Complete"
+                binding.tvScanStateBadge.text = if (isAnalyzing) getString(R.string.scan_state_scanning) else getString(R.string.scan_state_complete)
             }
         }
     }
@@ -196,11 +207,11 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
     private fun bindDiagnosisResult(result: DiagnosisResult) {
         binding.tvDiseaseName.text = result.diseaseName
         binding.tvDiseasePathogen.text = result.pathogen
-        binding.tvConfidenceText.text = "${result.confidencePct}% Match"
+        binding.tvConfidenceText.text = getString(R.string.match_format, result.confidencePct.toInt())
         binding.pbConfidence.progress = result.confidencePct.toInt()
         binding.tvSeverityStage.text = result.severityStage
         binding.tvLesionTag.text = result.lesionTag
-        binding.tvLesionConfidence.text = "${result.confidencePct}% Conf."
+        binding.tvLesionConfidence.text = getString(R.string.conf_format, result.confidencePct.toInt())
 
         val symptomsFormatted = result.observedSymptoms.joinToString("\n") { "• $it" }
         binding.tvSymptomsList.text = symptomsFormatted

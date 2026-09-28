@@ -49,6 +49,12 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final TextView tvActivitiesCount;
 
   @NonNull
+  public final TextView tvEmptyActivities;
+
+  @NonNull
+  public final TextView tvEmptyCrops;
+
+  @NonNull
   public final TextView tvFarmerNameHome;
 
   @NonNull
@@ -74,7 +80,8 @@ public final class FragmentHomeBinding implements ViewBinding {
       @NonNull MaterialCardView bentoDiseaseGuide, @NonNull MaterialCardView bentoExpenseLog,
       @NonNull MaterialCardView bentoWaterLog, @NonNull MaterialCardView cardAddNewCrop,
       @NonNull RecyclerView rvActiveCrops, @NonNull RecyclerView rvActivities,
-      @NonNull TextView tvActivitiesCount, @NonNull TextView tvFarmerNameHome,
+      @NonNull TextView tvActivitiesCount, @NonNull TextView tvEmptyActivities,
+      @NonNull TextView tvEmptyCrops, @NonNull TextView tvFarmerNameHome,
       @NonNull TextView tvFieldsCount, @NonNull TextView tvWeatherAlert,
       @NonNull TextView tvWeatherHumidity, @NonNull TextView tvWeatherRain,
       @NonNull TextView tvWeatherTemp, @NonNull TextView tvWeatherWind) {
@@ -88,6 +95,8 @@ public final class FragmentHomeBinding implements ViewBinding {
     this.rvActiveCrops = rvActiveCrops;
     this.rvActivities = rvActivities;
     this.tvActivitiesCount = tvActivitiesCount;
+    this.tvEmptyActivities = tvEmptyActivities;
+    this.tvEmptyCrops = tvEmptyCrops;
     this.tvFarmerNameHome = tvFarmerNameHome;
     this.tvFieldsCount = tvFieldsCount;
     this.tvWeatherAlert = tvWeatherAlert;
@@ -178,6 +187,18 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvEmptyActivities;
+      TextView tvEmptyActivities = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmptyActivities == null) {
+        break missingId;
+      }
+
+      id = R.id.tvEmptyCrops;
+      TextView tvEmptyCrops = ViewBindings.findChildViewById(rootView, id);
+      if (tvEmptyCrops == null) {
+        break missingId;
+      }
+
       id = R.id.tvFarmerNameHome;
       TextView tvFarmerNameHome = ViewBindings.findChildViewById(rootView, id);
       if (tvFarmerNameHome == null) {
@@ -222,8 +243,9 @@ public final class FragmentHomeBinding implements ViewBinding {
 
       return new FragmentHomeBinding((NestedScrollView) rootView, bentoAiLeafScan,
           bentoCropPassport, bentoDiseaseGuide, bentoExpenseLog, bentoWaterLog, cardAddNewCrop,
-          rvActiveCrops, rvActivities, tvActivitiesCount, tvFarmerNameHome, tvFieldsCount,
-          tvWeatherAlert, tvWeatherHumidity, tvWeatherRain, tvWeatherTemp, tvWeatherWind);
+          rvActiveCrops, rvActivities, tvActivitiesCount, tvEmptyActivities, tvEmptyCrops,
+          tvFarmerNameHome, tvFieldsCount, tvWeatherAlert, tvWeatherHumidity, tvWeatherRain,
+          tvWeatherTemp, tvWeatherWind);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

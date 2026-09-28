@@ -1,5 +1,6 @@
 package com.smartcropcare.app.ui.home
 
+import android.location.Location
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -8,6 +9,7 @@ import com.smartcropcare.app.data.local.entity.FarmActivityEntity
 import com.smartcropcare.app.data.model.WeatherData
 import com.smartcropcare.app.data.repository.CropRepository
 import com.smartcropcare.app.data.repository.WeatherRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -27,6 +29,12 @@ class HomeViewModel(
 
     val weather: StateFlow<WeatherData> = weatherRepository.currentWeather
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), WeatherData())
+
+    fun refreshWeather(location: Location?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            weatherRepository.refreshWeatherTelemetry(location)
+        }
+    }
 
     fun toggleActivity(id: Long, isCompleted: Boolean) {
         viewModelScope.launch {

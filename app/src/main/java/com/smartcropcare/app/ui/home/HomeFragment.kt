@@ -1,6 +1,7 @@
 package com.smartcropcare.app.ui.home
 
 import android.content.Intent
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.smartcropcare.app.R
 import com.smartcropcare.app.SmartCropCareApp
 import com.smartcropcare.app.databinding.FragmentHomeBinding
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
+import com.google.android.gms.location.LocationServices
 import com.smartcropcare.app.ui.activities.FarmActivityAdapter
 import com.smartcropcare.app.ui.crops.AddCropBottomSheetDialog
 import com.smartcropcare.app.ui.crops.CropAdapter
@@ -54,6 +60,36 @@ class HomeFragment : Fragment() {
         setupAddCropButton()
         observeViewModel()
         loadUserProfile()
+        fetchWeatherWithLocation()
+    }
+
+    fun updateWeather(location: Location) {
+        viewModel.refreshWeather(location)
+    }
+
+    private fun fetchWeatherWithLocation() {
+        val sessionManager = SessionManager(requireContext())
+        if (!sessionManager.isCurrentLocationMode()) {
+            val savedLoc = sessionManager.getLocation()
+            if (savedLoc != null) {
+                val loc = Location("provider").apply {
+                    latitude = savedLoc.latitude
+                    longitude = savedLoc.longitude
+                }
+                viewModel.refreshWeather(loc)
+                return
+            }
+        }
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                viewModel.refreshWeather(location)
+            }
+        } else {
+            viewModel.refreshWeather(null)
+        }
     }
 
     private fun loadUserProfile() {
@@ -63,7 +99,7 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             val user = app.container.database.userDao().getUserById(userId)
             if (user != null) {
-                binding.tvFarmerNameHome.text = "Hi, ${user.name} 👋"
+                binding.tvFarmerNameHome.text = getString(R.string.greeting_format, user.name)
             }
         }
     }
@@ -157,7 +193,10 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.activeCrops.collect { crops ->
                 cropAdapter.submitList(crops)
-                binding.tvFieldsCount.text = "${crops.size} Fields Active"
+                binding.tvFieldsCount.text = getString(R.string.fields_active_format, crops.size)
+                
+                binding.rvActiveCrops.visibility = if (crops.isEmpty()) View.GONE else View.VISIBLE
+                binding.tvEmptyCrops.visibility = if (crops.isEmpty()) View.VISIBLE else View.GONE
             }
         }
 
@@ -165,7 +204,10 @@ class HomeFragment : Fragment() {
             viewModel.activities.collect { activities ->
                 activityAdapter.submitList(activities)
                 val completed = activities.count { it.isCompleted }
-                binding.tvActivitiesCount.text = "$completed of ${activities.size} Completed"
+                binding.tvActivitiesCount.text = getString(R.string.activities_completed_format, completed, activities.size)
+                
+                binding.rvActivities.visibility = if (activities.isEmpty()) View.GONE else View.VISIBLE
+                binding.tvEmptyActivities.visibility = if (activities.isEmpty()) View.VISIBLE else View.GONE
             }
         }
 
@@ -175,7 +217,7 @@ class HomeFragment : Fragment() {
                 binding.tvWeatherHumidity.text = weather.humidity
                 binding.tvWeatherRain.text = weather.rainProbability
                 binding.tvWeatherWind.text = weather.windSpeed
-                binding.tvWeatherAlert.text = "${weather.advisoryTitle} ${weather.advisoryDescription}"
+                binding.tvWeatherAlert.text = "${weather.advisoryTitle} - ${weather.advisoryDescription}"
             }
         }
     }

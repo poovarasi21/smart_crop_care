@@ -42,7 +42,7 @@ public final class UserDao_Impl implements UserDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `users` (`id`,`email`,`passwordHash`,`name`,`profilePhotoUri`,`language`) VALUES (nullif(?, 0),?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `users` (`id`,`email`,`passwordHash`,`name`,`profilePhotoUri`,`language`,`phone`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
       }
 
       @Override
@@ -58,13 +58,14 @@ public final class UserDao_Impl implements UserDao {
           statement.bindString(5, entity.getProfilePhotoUri());
         }
         statement.bindString(6, entity.getLanguage());
+        statement.bindString(7, entity.getPhone());
       }
     };
     this.__updateAdapterOfUserEntity = new EntityDeletionOrUpdateAdapter<UserEntity>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `users` SET `id` = ?,`email` = ?,`passwordHash` = ?,`name` = ?,`profilePhotoUri` = ?,`language` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `users` SET `id` = ?,`email` = ?,`passwordHash` = ?,`name` = ?,`profilePhotoUri` = ?,`language` = ?,`phone` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -80,7 +81,8 @@ public final class UserDao_Impl implements UserDao {
           statement.bindString(5, entity.getProfilePhotoUri());
         }
         statement.bindString(6, entity.getLanguage());
-        statement.bindLong(7, entity.getId());
+        statement.bindString(7, entity.getPhone());
+        statement.bindLong(8, entity.getId());
       }
     };
   }
@@ -124,7 +126,7 @@ public final class UserDao_Impl implements UserDao {
   @Override
   public Object getUserByEmail(final String email,
       final Continuation<? super UserEntity> $completion) {
-    final String _sql = "SELECT * FROM users WHERE email = ? LIMIT 1";
+    final String _sql = "SELECT * FROM users WHERE LOWER(email) = LOWER(?) LIMIT 1";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
     _statement.bindString(_argIndex, email);
@@ -141,6 +143,7 @@ public final class UserDao_Impl implements UserDao {
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfProfilePhotoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoUri");
           final int _cursorIndexOfLanguage = CursorUtil.getColumnIndexOrThrow(_cursor, "language");
+          final int _cursorIndexOfPhone = CursorUtil.getColumnIndexOrThrow(_cursor, "phone");
           final UserEntity _result;
           if (_cursor.moveToFirst()) {
             final long _tmpId;
@@ -159,7 +162,9 @@ public final class UserDao_Impl implements UserDao {
             }
             final String _tmpLanguage;
             _tmpLanguage = _cursor.getString(_cursorIndexOfLanguage);
-            _result = new UserEntity(_tmpId,_tmpEmail,_tmpPasswordHash,_tmpName,_tmpProfilePhotoUri,_tmpLanguage);
+            final String _tmpPhone;
+            _tmpPhone = _cursor.getString(_cursorIndexOfPhone);
+            _result = new UserEntity(_tmpId,_tmpEmail,_tmpPasswordHash,_tmpName,_tmpProfilePhotoUri,_tmpLanguage,_tmpPhone);
           } else {
             _result = null;
           }
@@ -191,6 +196,7 @@ public final class UserDao_Impl implements UserDao {
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfProfilePhotoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoUri");
           final int _cursorIndexOfLanguage = CursorUtil.getColumnIndexOrThrow(_cursor, "language");
+          final int _cursorIndexOfPhone = CursorUtil.getColumnIndexOrThrow(_cursor, "phone");
           final UserEntity _result;
           if (_cursor.moveToFirst()) {
             final long _tmpId;
@@ -209,7 +215,9 @@ public final class UserDao_Impl implements UserDao {
             }
             final String _tmpLanguage;
             _tmpLanguage = _cursor.getString(_cursorIndexOfLanguage);
-            _result = new UserEntity(_tmpId,_tmpEmail,_tmpPasswordHash,_tmpName,_tmpProfilePhotoUri,_tmpLanguage);
+            final String _tmpPhone;
+            _tmpPhone = _cursor.getString(_cursorIndexOfPhone);
+            _result = new UserEntity(_tmpId,_tmpEmail,_tmpPasswordHash,_tmpName,_tmpProfilePhotoUri,_tmpLanguage,_tmpPhone);
           } else {
             _result = null;
           }

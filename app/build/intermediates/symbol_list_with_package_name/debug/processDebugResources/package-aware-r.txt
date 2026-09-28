@@ -3360,6 +3360,7 @@ id btnBackPassport
 id btnChangePhoto
 id btnCheckFrame
 id btnDownloadPassportPdf
+id btnEditName
 id btnInfoDialog
 id btnLanguageToggle
 id btnLogin
@@ -3371,6 +3372,7 @@ id btnRegister
 id btnSaveCrop
 id btnSaveMedicalHistory
 id btnScanLeafAi
+id btnSearch
 id btnShareCrop
 id btnShareKvk
 id btnSharePassportBuyer
@@ -3382,6 +3384,7 @@ id btnTakePhoto
 id btnToggleLang
 id btnTopExportPdf
 id btnUploadGallery
+id btnUseCurrentLocation
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3404,10 +3407,16 @@ id chain2
 id chains
 id checkbox
 id checked
+id chipBengaluru
 id chipBrinjal
+id chipChennai
 id chipChilli
+id chipCoimbatore
+id chipGroupCities
 id chipGroupCrops
+id chipMadurai
 id chipOkra
+id chipSalem
 id chipTomato
 id chronometer
 id circle_center
@@ -3421,6 +3430,7 @@ id compress
 id confirm_button
 id constraint
 id container
+id containerLocation
 id content
 id contentPanel
 id contiguous
@@ -3494,6 +3504,7 @@ id etName
 id etNutrientName
 id etPassword
 id etPlotName
+id etSearchQuery
 id etSoilType
 id exitUntilCollapsed
 id expand_activities_button
@@ -3686,6 +3697,7 @@ id pathRelative
 id pbCircularHealth
 id pbConfidence
 id pbCycleProgress
+id pbLocationSearch
 id pbSoilMoisture
 id peekHeight
 id percent
@@ -3844,6 +3856,8 @@ id tvCropStageDap
 id tvCropVariety
 id tvDiseaseName
 id tvDiseasePathogen
+id tvEmptyActivities
+id tvEmptyCrops
 id tvExpensesTotal
 id tvFarmerLocation
 id tvFarmerName
@@ -4058,6 +4072,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_add_crop
 layout dialog_add_expense
+layout dialog_location_select
 layout dialog_log_fertilizer
 layout dialog_log_water
 layout fragment_activities
@@ -4160,6 +4175,9 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_add_crop
 string action_add_crop_desc
+string action_cancel
+string action_save
+string activities_completed_format
 string activities_completed_fraction
 string add_crop_acreage_hint
 string add_crop_name_hint
@@ -4170,7 +4188,12 @@ string add_crop_subtitle
 string add_crop_title
 string add_crop_variety_hint
 string ai_agronomy_badge
+string ai_low_confidence_msg
+string ai_low_confidence_title
+string ai_model_missing_msg
 string ai_model_version
+string ai_no_image_msg
+string ai_safety_disclaimer
 string androidx_startup
 string app_name
 string app_tagline
@@ -4210,6 +4233,7 @@ string cert_official_registry
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
+string city_state_format
 string clear_text_end_icon_content_description
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
@@ -4229,6 +4253,7 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string conf_format
 string confidence_meter
 string crop_age_label
 string crop_overview_title
@@ -4238,6 +4263,9 @@ string disclaimer_icar
 string disease_detection_title
 string early_blight_subtitle
 string early_blight_title
+string edit_profile_name
+string empty_activities_msg
+string empty_crops_msg
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4250,12 +4278,15 @@ string field_operations
 string field_telemetry_ready
 string field_weather_telemetry
 string fields_active_count
+string fields_active_format
 string flower_drop_alert_desc
 string flower_drop_alert_title
 string flowering_stage
+string greeting_format
 string greeting_prefix
 string harvest_countdown
 string hide_bottom_view_on_scroll_behavior
+string home_subtitle
 string hybrid_badge
 string icon_content_description
 string item_view_role_description
@@ -4264,6 +4295,15 @@ string kpi_health_index
 string kpi_projected_revenue
 string kpi_title
 string kpi_total_investment
+string language_switched
+string loc_dialog_subtitle
+string loc_dialog_title
+string loc_not_found
+string loc_or_search
+string loc_popular_hubs
+string loc_search_btn
+string loc_search_hint
+string loc_use_current
 string location_failed
 string location_madurai
 string location_permission_denied
@@ -4291,6 +4331,7 @@ string m3_sys_motion_easing_standard
 string m3_sys_motion_easing_standard_accelerate
 string m3_sys_motion_easing_standard_decelerate
 string market_linkage_title
+string match_format
 string material_clock_display_divider
 string material_clock_toggle_content_description
 string material_hour_24h_suffix
@@ -4401,12 +4442,15 @@ string profile_logout
 string profile_preferences
 string profile_storage
 string profile_storage_desc
+string profile_updated
 string quick_diagnostics_title
 string recommended_treatment
 string register_button
 string register_login_prompt
 string register_name
 string register_title
+string scan_state_complete
+string scan_state_scanning
 string scientific_tomato
 string search_menu_title
 string searchbar_scrolling_view_behavior

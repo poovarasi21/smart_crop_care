@@ -21,6 +21,8 @@ import com.smartcropcare.app.data.local.dao.FarmActivityDao;
 import com.smartcropcare.app.data.local.dao.FarmActivityDao_Impl;
 import com.smartcropcare.app.data.local.dao.LogDao;
 import com.smartcropcare.app.data.local.dao.LogDao_Impl;
+import com.smartcropcare.app.data.local.dao.PestDao;
+import com.smartcropcare.app.data.local.dao.PestDao_Impl;
 import com.smartcropcare.app.data.local.dao.UserDao;
 import com.smartcropcare.app.data.local.dao.UserDao_Impl;
 import java.lang.Class;
@@ -50,21 +52,24 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile ExpenseDao _expenseDao;
 
+  private volatile PestDao _pestDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `passwordHash` TEXT NOT NULL, `name` TEXT NOT NULL, `profilePhotoUri` TEXT, `language` TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `passwordHash` TEXT NOT NULL, `name` TEXT NOT NULL, `profilePhotoUri` TEXT, `language` TEXT NOT NULL, `phone` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `crops` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userId` INTEGER NOT NULL, `name` TEXT NOT NULL, `variety` TEXT NOT NULL, `scientificName` TEXT NOT NULL, `hybridType` TEXT NOT NULL, `plotName` TEXT NOT NULL, `zoneBed` TEXT NOT NULL, `acreage` REAL NOT NULL, `soilType` TEXT NOT NULL, `plantingDate` TEXT NOT NULL, `cropAgeDays` INTEGER NOT NULL, `currentStageIndex` INTEGER NOT NULL, `stageName` TEXT NOT NULL, `stageCompletionPct` INTEGER NOT NULL, `healthScore` INTEGER NOT NULL, `healthStatus` TEXT NOT NULL, `cycleProgressPct` INTEGER NOT NULL, `waterStatus` TEXT NOT NULL, `fertilizerStatus` TEXT NOT NULL, `harvestCountdownDays` INTEGER NOT NULL, `imageResName` TEXT NOT NULL, `imageUri` TEXT, `isActive` INTEGER NOT NULL, `certificateId` TEXT NOT NULL, `estimatedYieldTonPerAcre` REAL NOT NULL, `totalInvestment` REAL NOT NULL, `projectedRevenue` REAL NOT NULL, `soilMoisturePct` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `farm_activities` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `time` TEXT NOT NULL, `title` TEXT NOT NULL, `tag` TEXT NOT NULL, `isCompleted` INTEGER NOT NULL, `category` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `irrigation_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `litersApplied` INTEGER NOT NULL, `durationMinutes` INTEGER NOT NULL, `method` TEXT NOT NULL, `efficiencyPct` INTEGER NOT NULL, `soilMoisturePct` INTEGER NOT NULL, `notes` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `fertilizer_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `nutrientName` TEXT NOT NULL, `dosage` TEXT NOT NULL, `applicationMethod` TEXT NOT NULL, `adherenceStatus` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `disease_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `diseaseName` TEXT NOT NULL, `pathogen` TEXT NOT NULL, `confidencePct` REAL NOT NULL, `severityStage` TEXT NOT NULL, `observedSymptoms` TEXT NOT NULL, `organicTreatment` TEXT NOT NULL, `chemicalTreatment` TEXT NOT NULL, `imagePath` TEXT, `status` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `expenses` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `category` TEXT NOT NULL, `amount` REAL NOT NULL, `description` TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `pest_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `pestName` TEXT NOT NULL, `damageSymptoms` TEXT NOT NULL, `managementAction` TEXT NOT NULL, `treatmentNotes` TEXT NOT NULL, `imagePath` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '21870f2b2514b61504fe85536e7b8ac5')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7a5b8d2be009bd85e2ee03b96ad9b22e')");
       }
 
       @Override
@@ -76,6 +81,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("DROP TABLE IF EXISTS `fertilizer_logs`");
         db.execSQL("DROP TABLE IF EXISTS `disease_records`");
         db.execSQL("DROP TABLE IF EXISTS `expenses`");
+        db.execSQL("DROP TABLE IF EXISTS `pest_records`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -119,13 +125,14 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsUsers = new HashMap<String, TableInfo.Column>(6);
+        final HashMap<String, TableInfo.Column> _columnsUsers = new HashMap<String, TableInfo.Column>(7);
         _columnsUsers.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsers.put("email", new TableInfo.Column("email", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsers.put("passwordHash", new TableInfo.Column("passwordHash", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsers.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsers.put("profilePhotoUri", new TableInfo.Column("profilePhotoUri", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsers.put("language", new TableInfo.Column("language", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUsers.put("phone", new TableInfo.Column("phone", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUsers = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesUsers = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoUsers = new TableInfo("users", _columnsUsers, _foreignKeysUsers, _indicesUsers);
@@ -265,9 +272,27 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoExpenses + "\n"
                   + " Found:\n" + _existingExpenses);
         }
+        final HashMap<String, TableInfo.Column> _columnsPestRecords = new HashMap<String, TableInfo.Column>(8);
+        _columnsPestRecords.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("cropId", new TableInfo.Column("cropId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("date", new TableInfo.Column("date", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("pestName", new TableInfo.Column("pestName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("damageSymptoms", new TableInfo.Column("damageSymptoms", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("managementAction", new TableInfo.Column("managementAction", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("treatmentNotes", new TableInfo.Column("treatmentNotes", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPestRecords.put("imagePath", new TableInfo.Column("imagePath", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysPestRecords = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesPestRecords = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoPestRecords = new TableInfo("pest_records", _columnsPestRecords, _foreignKeysPestRecords, _indicesPestRecords);
+        final TableInfo _existingPestRecords = TableInfo.read(db, "pest_records");
+        if (!_infoPestRecords.equals(_existingPestRecords)) {
+          return new RoomOpenHelper.ValidationResult(false, "pest_records(com.smartcropcare.app.data.local.entity.PestRecordEntity).\n"
+                  + " Expected:\n" + _infoPestRecords + "\n"
+                  + " Found:\n" + _existingPestRecords);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "21870f2b2514b61504fe85536e7b8ac5", "a5d057c8e0f03aab77f0e17da6bf8ffd");
+    }, "7a5b8d2be009bd85e2ee03b96ad9b22e", "3d23fa770f897a30d71e619350696abf");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -278,7 +303,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","crops","farm_activities","irrigation_logs","fertilizer_logs","disease_records","expenses");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","crops","farm_activities","irrigation_logs","fertilizer_logs","disease_records","expenses","pest_records");
   }
 
   @Override
@@ -294,6 +319,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `fertilizer_logs`");
       _db.execSQL("DELETE FROM `disease_records`");
       _db.execSQL("DELETE FROM `expenses`");
+      _db.execSQL("DELETE FROM `pest_records`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -314,6 +340,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(LogDao.class, LogDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(DiseaseRecordDao.class, DiseaseRecordDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(ExpenseDao.class, ExpenseDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(PestDao.class, PestDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -412,6 +439,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _expenseDao = new ExpenseDao_Impl(this);
         }
         return _expenseDao;
+      }
+    }
+  }
+
+  @Override
+  public PestDao pestDao() {
+    if (_pestDao != null) {
+      return _pestDao;
+    } else {
+      synchronized(this) {
+        if(_pestDao == null) {
+          _pestDao = new PestDao_Impl(this);
+        }
+        return _pestDao;
       }
     }
   }

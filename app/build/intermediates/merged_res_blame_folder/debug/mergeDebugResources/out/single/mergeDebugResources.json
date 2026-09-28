@@ -1,234 +1,242 @@
 [
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_pill_optimal.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_pill_optimal.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_log_water.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_water.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_pill_neutral.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_pill_neutral.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_compost.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_compost.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_fragment_profile.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_download.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_download.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_share.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_share.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_add_crop.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_add_crop.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_badge.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_badge.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_tomato_harvest.jpg.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/tomato_harvest.jpg"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_crop_overview.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_crop_overview.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_digital_crop_passport.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_digital_crop_passport.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_check.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_check.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_main.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_main.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_corner_tr.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/corner_tr.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_payments.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_payments.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_payments.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_payments.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_fragment_profile.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_check.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_check.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_circle_progress_ring.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\circle_progress_ring.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_arrow_forward.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_arrow_forward.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_digital_crop_passport.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_digital_crop_passport.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_agriculture.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_agriculture.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_corner_bl.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\corner_bl.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_laser_line.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_laser_line.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_compost.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_compost.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_document_scanner.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_document_scanner.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_pill_white.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_pill_white.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_item_farm_activity.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\item_farm_activity.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_warning.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_warning.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_water_drop.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_water_drop.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_settings.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_settings.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_arrow_forward.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_arrow_forward.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_arrow_back.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_dialog_log_water.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_log_water.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/menu/bottom_nav_menu.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_ai_disease_detection.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_ai_disease_detection.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_dialog_add_expense.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_add_expense.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_fragment_crop_list.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_crop_list.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_item_active_crop.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/item_active_crop.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/layout_fragment_activities.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_activities.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_checklist.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_checklist.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_potted_plant.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_potted_plant.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_tomato_harvest.jpg.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\tomato_harvest.jpg"
     },
     {
         "merged": "com.smartcropcare.app-debug-46:/layout_fragment_home.xml.flat",
         "source": "com.smartcropcare.app-main-48:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_tomato_plant.jpg.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/tomato_plant.jpg"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_fragment_crop_list.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_crop_list.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_rounded_container_low.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_rounded_container_low.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_log_fertilizer.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_fertilizer.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_farmer_rajesh.jpg.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/farmer_rajesh.jpg"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_settings.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_item_farm_activity.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/item_farm_activity.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_person.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_person.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_dialog_add_crop.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_add_crop.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_corner_tl.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/corner_tl.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_rounded_card.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_rounded_card.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_photo_camera.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_photo_camera.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_warning.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_warning.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_register.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_register.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_add_expense.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_add_expense.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_photo_library.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_photo_library.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_location_on.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_location_on.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_corner_br.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\corner_br.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_pill_warning.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_pill_warning.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_photo_library.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_photo_library.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_crop_overview.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_crop_overview.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_location_select.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_location_select.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_corner_bl.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/corner_bl.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_location_on.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_location_on.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_sensors.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_sensors.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_ai_disease_detection.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_ai_disease_detection.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_tomato_leaf_blight.jpg.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/tomato_leaf_blight.jpg"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_partly_cloudy.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_partly_cloudy.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_download.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_download.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_menu_book.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_menu_book.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_circle_progress_ring.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/circle_progress_ring.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_fragment_activities.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_activities.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_dialog_log_fertilizer.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_log_fertilizer.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_checklist.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_checklist.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_menu_book.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_menu_book.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_tomato_plant.jpg.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\tomato_plant.jpg"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_notifications.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_notifications.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_pill_white.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_pill_white.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_person.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_person.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_arrow_back.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_arrow_back.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_login.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_login.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_item_active_crop.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\item_active_crop.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_corner_br.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/corner_br.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_laser_line.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_laser_line.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_bg_rounded_card.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/bg_rounded_card.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_photo_camera.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_photo_camera.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/xml_file_paths.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/xml/file_paths.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_pill_neutral.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_pill_neutral.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_activity_splash.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_rounded_container_low.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_rounded_container_low.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_document_scanner.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_document_scanner.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_farmer_rajesh.jpg.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\farmer_rajesh.jpg"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_partly_cloudy.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_partly_cloudy.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_corner_tr.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\corner_tr.xml"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_water_drop.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/drawable/ic_water_drop.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_notifications.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_agriculture.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_agriculture.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_pill_warning.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_pill_warning.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_sensors.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_sensors.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_corner_tl.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\corner_tl.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_tomato_leaf_blight.jpg.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\tomato_leaf_blight.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_pill_optimal.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\bg_pill_optimal.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_badge.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_badge.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_share.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_share.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_potted_plant.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_potted_plant.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\xml\\file_paths.xml"
     }
 ]

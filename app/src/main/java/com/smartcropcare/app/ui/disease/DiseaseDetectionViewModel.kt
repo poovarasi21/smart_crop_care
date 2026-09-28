@@ -1,11 +1,11 @@
 package com.smartcropcare.app.ui.disease
 
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.smartcropcare.app.data.model.DiagnosisResult
 import com.smartcropcare.app.data.repository.DiseaseDetectionRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,23 +21,25 @@ class DiseaseDetectionViewModel(
     private val _isAnalyzing = MutableStateFlow(false)
     val isAnalyzing: StateFlow<Boolean> = _isAnalyzing.asStateFlow()
 
-    private val _diagnosisResult = MutableStateFlow(repository.analyzeLeafImage("Tomato"))
+    private val _diagnosisResult = MutableStateFlow(repository.analyzeLeafImage(null, "Tomato"))
     val diagnosisResult: StateFlow<DiagnosisResult> = _diagnosisResult.asStateFlow()
 
     private val _isSaved = MutableStateFlow(false)
     val isSaved: StateFlow<Boolean> = _isSaved.asStateFlow()
 
+    private var currentBitmap: Bitmap? = null
+
     fun selectCrop(cropName: String) {
         _selectedCrop.value = cropName
-        _diagnosisResult.value = repository.analyzeLeafImage(cropName)
+        _diagnosisResult.value = repository.analyzeLeafImage(currentBitmap, cropName)
         _isSaved.value = false
     }
 
-    fun startAnalysis(cropName: String = _selectedCrop.value) {
+    fun startAnalysis(bitmap: Bitmap?, cropName: String = _selectedCrop.value) {
+        currentBitmap = bitmap
         viewModelScope.launch {
             _isAnalyzing.value = true
-            delay(1500) // Simulate on-device neural inference and laser scan
-            _diagnosisResult.value = repository.analyzeLeafImage(cropName)
+            _diagnosisResult.value = repository.analyzeLeafImage(bitmap, cropName)
             _isAnalyzing.value = false
             _isSaved.value = false
         }

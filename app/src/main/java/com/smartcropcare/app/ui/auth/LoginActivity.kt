@@ -10,6 +10,7 @@ import com.smartcropcare.app.databinding.ActivityLoginBinding
 import com.smartcropcare.app.ui.main.MainActivity
 import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,13 +35,14 @@ class LoginActivity : AppCompatActivity() {
 
             val app = application as SmartCropCareApp
             lifecycleScope.launch {
-                val user = app.container.database.userDao().getUserByEmail(email)
-                if (user != null && user.passwordHash == password) {
+                val user = app.container.database.userDao().getUserByEmail(email.lowercase())
+                val hashedPassword = hashPassword(password)
+                if (user != null && user.passwordHash == hashedPassword) {
                     sessionManager.saveUserId(user.id)
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Invalid email or password", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -48,5 +50,10 @@ class LoginActivity : AppCompatActivity() {
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun hashPassword(password: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(password.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
     }
 }

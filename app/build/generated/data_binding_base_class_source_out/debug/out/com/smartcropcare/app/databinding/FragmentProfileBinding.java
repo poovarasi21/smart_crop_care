@@ -26,6 +26,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final FrameLayout btnChangePhoto;
 
   @NonNull
+  public final ImageView btnEditName;
+
+  @NonNull
   public final MaterialButton btnLogout;
 
   @NonNull
@@ -41,11 +44,12 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final TextView tvFarmerName;
 
   private FragmentProfileBinding(@NonNull ScrollView rootView, @NonNull FrameLayout btnChangePhoto,
-      @NonNull MaterialButton btnLogout, @NonNull MaterialButton btnToggleLang,
-      @NonNull ImageView ivFarmerProfile, @NonNull TextView tvFarmerLocation,
-      @NonNull TextView tvFarmerName) {
+      @NonNull ImageView btnEditName, @NonNull MaterialButton btnLogout,
+      @NonNull MaterialButton btnToggleLang, @NonNull ImageView ivFarmerProfile,
+      @NonNull TextView tvFarmerLocation, @NonNull TextView tvFarmerName) {
     this.rootView = rootView;
     this.btnChangePhoto = btnChangePhoto;
+    this.btnEditName = btnEditName;
     this.btnLogout = btnLogout;
     this.btnToggleLang = btnToggleLang;
     this.ivFarmerProfile = ivFarmerProfile;
@@ -86,6 +90,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnEditName;
+      ImageView btnEditName = ViewBindings.findChildViewById(rootView, id);
+      if (btnEditName == null) {
+        break missingId;
+      }
+
       id = R.id.btnLogout;
       MaterialButton btnLogout = ViewBindings.findChildViewById(rootView, id);
       if (btnLogout == null) {
@@ -116,8 +126,8 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ScrollView) rootView, btnChangePhoto, btnLogout,
-          btnToggleLang, ivFarmerProfile, tvFarmerLocation, tvFarmerName);
+      return new FragmentProfileBinding((ScrollView) rootView, btnChangePhoto, btnEditName,
+          btnLogout, btnToggleLang, ivFarmerProfile, tvFarmerLocation, tvFarmerName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

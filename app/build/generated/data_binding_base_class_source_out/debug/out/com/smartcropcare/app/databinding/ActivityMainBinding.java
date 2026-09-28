@@ -34,6 +34,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FrameLayout btnNotification;
 
   @NonNull
+  public final LinearLayout containerLocation;
+
+  @NonNull
   public final ImageView ivFarmerAvatar;
 
   @NonNull
@@ -53,14 +56,15 @@ public final class ActivityMainBinding implements ViewBinding {
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNavigationView, @NonNull LinearLayout btnLanguageToggle,
-      @NonNull FrameLayout btnNotification, @NonNull ImageView ivFarmerAvatar,
-      @NonNull FrameLayout navHostFragment, @NonNull Toolbar topAppBar,
-      @NonNull TextView tvLangCodeEn, @NonNull TextView tvLangCodeTa,
+      @NonNull FrameLayout btnNotification, @NonNull LinearLayout containerLocation,
+      @NonNull ImageView ivFarmerAvatar, @NonNull FrameLayout navHostFragment,
+      @NonNull Toolbar topAppBar, @NonNull TextView tvLangCodeEn, @NonNull TextView tvLangCodeTa,
       @NonNull TextView tvLocation) {
     this.rootView = rootView;
     this.bottomNavigationView = bottomNavigationView;
     this.btnLanguageToggle = btnLanguageToggle;
     this.btnNotification = btnNotification;
+    this.containerLocation = containerLocation;
     this.ivFarmerAvatar = ivFarmerAvatar;
     this.navHostFragment = navHostFragment;
     this.topAppBar = topAppBar;
@@ -114,6 +118,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.containerLocation;
+      LinearLayout containerLocation = ViewBindings.findChildViewById(rootView, id);
+      if (containerLocation == null) {
+        break missingId;
+      }
+
       id = R.id.ivFarmerAvatar;
       ImageView ivFarmerAvatar = ViewBindings.findChildViewById(rootView, id);
       if (ivFarmerAvatar == null) {
@@ -151,8 +161,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigationView,
-          btnLanguageToggle, btnNotification, ivFarmerAvatar, navHostFragment, topAppBar,
-          tvLangCodeEn, tvLangCodeTa, tvLocation);
+          btnLanguageToggle, btnNotification, containerLocation, ivFarmerAvatar, navHostFragment,
+          topAppBar, tvLangCodeEn, tvLangCodeTa, tvLocation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

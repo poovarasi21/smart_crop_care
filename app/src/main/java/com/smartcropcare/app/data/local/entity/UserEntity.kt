@@ -10,5 +10,6 @@ data class UserEntity(
     val passwordHash: String,
     val name: String,
     val profilePhotoUri: String? = null,
-    val language: String = "en"
+    val language: String = "en",
+    val phone: String = ""
 )

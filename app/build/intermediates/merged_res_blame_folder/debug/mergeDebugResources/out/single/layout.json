@@ -1,70 +1,78 @@
 [
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_ai_disease_detection.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_ai_disease_detection.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/fragment_profile.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_ai_disease_detection.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_ai_disease_detection.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/dialog_log_fertilizer.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_log_fertilizer.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_register.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_login.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_login.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\item_active_crop.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\item_active_crop.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_main.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/dialog_log_water.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_log_water.xml"
-    },
-    {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_crop_overview.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_crop_overview.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_add_crop.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_add_crop.xml"
     },
     {
         "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/fragment_home.xml",
         "source": "com.smartcropcare.app-main-48:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_digital_crop_passport.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_digital_crop_passport.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_crop_list.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_crop_list.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/fragment_activities.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_activities.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_log_fertilizer.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_fertilizer.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/dialog_add_expense.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_add_expense.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_profile.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/item_farm_activity.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/item_farm_activity.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_crop_overview.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_crop_overview.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_register.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_register.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_activities.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_activities.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/dialog_add_crop.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/dialog_add_crop.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/item_active_crop.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/item_active_crop.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_splash.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_digital_crop_passport.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_digital_crop_passport.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/fragment_crop_list.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_crop_list.xml"
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_location_select.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_location_select.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\item_farm_activity.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\item_farm_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_add_expense.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_add_expense.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_log_water.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_water.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\fragment_home.xml"
     }
 ]

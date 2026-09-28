@@ -58,12 +58,15 @@ class CropOverviewActivity : AppCompatActivity() {
         }
 
         binding.btnShareCrop.setOnClickListener {
+            val crop = viewModel.crop.value
+            val text = if (crop != null) {
+                "Smart Crop Care Report: ${crop.name} (${crop.variety} ${crop.plotName}) is currently at ${crop.stageName} (Day ${crop.cropAgeDays}). Health Score: ${crop.healthScore}%. ${crop.waterStatus}."
+            } else {
+                "Smart Crop Care Report"
+            }
             val sendIntent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(
-                    Intent.EXTRA_TEXT,
-                    "Smart Crop Care Report: Tomato (Arka Rakshak Plot A) is currently at Flowering Stage (Day 48). Health Score: 86%. Water due today."
-                )
+                putExtra(Intent.EXTRA_TEXT, text)
                 type = "text/plain"
             }
             startActivity(Intent.createChooser(sendIntent, "Share Crop Status"))

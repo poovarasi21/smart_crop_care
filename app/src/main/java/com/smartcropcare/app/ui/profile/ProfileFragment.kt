@@ -14,13 +14,19 @@ import com.smartcropcare.app.databinding.FragmentProfileBinding
 import com.smartcropcare.app.ui.auth.LoginActivity
 import com.smartcropcare.app.utils.LocaleHelper
 import com.smartcropcare.app.utils.SessionManager
+import com.smartcropcare.app.R
 
 import androidx.activity.result.contract.ActivityResultContracts
 import android.net.Uri
+import android.provider.MediaStore
+import android.graphics.Bitmap
 import com.smartcropcare.app.ui.main.MainActivity
 import android.Manifest
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import java.io.File
@@ -54,6 +60,29 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private val takePhotoLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val bitmap = result.data?.extras?.get("data") as? Bitmap
+            bitmap?.let {
+                try {
+                    val file = File(requireContext().filesDir, "profile_${System.currentTimeMillis()}.jpg")
+                    val outputStream = FileOutputStream(file)
+                    it.compress(Bitmap.CompressFormat.JPEG, 90, outputStream)
+                    outputStream.close()
+
+                    val localUri = Uri.fromFile(file)
+                    binding.ivFarmerProfile.setImageURI(localUri)
+                    saveProfilePhoto(localUri.toString())
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(requireContext(), "Failed to save photo", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -70,7 +99,7 @@ class ProfileFragment : Fragment() {
             val current = LocaleHelper.getLanguage(requireContext())
             val target = if (current == "en") "ta" else "en"
             LocaleHelper.setLocale(requireContext(), target)
-            Toast.makeText(requireContext(), "Language switched to $target", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.language_switched, target), Toast.LENGTH_SHORT).show()
         }
 
         binding.btnLogout.setOnClickListener {
@@ -82,7 +111,22 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnChangePhoto.setOnClickListener {
-            pickImageLauncher.launch("image/*")
+            val options = arrayOf("Take Photo with Camera", "Choose from Gallery")
+            AlertDialog.Builder(requireContext())
+                .setTitle("Update Profile Photo")
+                .setItems(options) { _, which ->
+                    if (which == 0) {
+                        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                            takePhotoLauncher.launch(intent)
+                        } else {
+                            requestPermissions(arrayOf(Manifest.permission.CAMERA), 2001)
+                        }
+                    } else {
+                        pickImageLauncher.launch("image/*")
+                    }
+                }
+                .show()
         }
 
         val sessionManager = SessionManager(requireContext())
@@ -102,6 +146,29 @@ class ProfileFragment : Fragment() {
             }
         }
         
+        binding.btnEditName.setOnClickListener {
+            val editText = EditText(requireContext())
+            editText.setText(binding.tvFarmerName.text)
+            AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.edit_profile_name))
+                .setView(editText)
+                .setPositiveButton(getString(R.string.action_save)) { _, _ ->
+                    val newName = editText.text.toString().trim()
+                    if (newName.isNotEmpty()) {
+                        binding.tvFarmerName.text = newName
+                        viewLifecycleOwner.lifecycleScope.launch {
+                            val userDao = app.container.database.userDao()
+                            val user = userDao.getUserById(userId)
+                            if (user != null) {
+                                userDao.updateUser(user.copy(name = newName))
+                            }
+                        }
+                    }
+                }
+                .setNegativeButton(getString(R.string.action_cancel), null)
+                .show()
+        }
+        
         fetchLocationForProfile()
     }
 
@@ -118,7 +185,7 @@ class ProfileFragment : Fragment() {
                             val address = addresses[0]
                             val city = address.locality ?: address.subAdminArea ?: address.adminArea
                             val state = address.adminArea
-                            binding.tvFarmerLocation.text = "$city, $state"
+                            binding.tvFarmerLocation.text = getString(R.string.city_state_format, city, state)
                         }
                     } catch (e: Exception) {
                         binding.tvFarmerLocation.text = "${it.latitude.toString().take(6)}, ${it.longitude.toString().take(6)}"
@@ -138,7 +205,7 @@ class ProfileFragment : Fragment() {
             if (user != null) {
                 val updatedUser = user.copy(profilePhotoUri = uriString)
                 userDao.updateUser(updatedUser)
-                Toast.makeText(requireContext(), "Profile photo updated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.profile_updated), Toast.LENGTH_SHORT).show()
                 (requireActivity() as? MainActivity)?.recreate() // Reload to update toolbar avatar
             }
         }

@@ -2,6 +2,7 @@ package com.smartcropcare.app.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +10,7 @@ import com.smartcropcare.app.SmartCropCareApp
 import com.smartcropcare.app.data.local.entity.UserEntity
 import com.smartcropcare.app.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -29,6 +31,16 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (password.length < 6) {
+                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val app = application as SmartCropCareApp
             lifecycleScope.launch {
                 val existing = app.container.database.userDao().getUserByEmail(email)
@@ -37,7 +49,8 @@ class RegisterActivity : AppCompatActivity() {
                     return@launch
                 }
                 
-                val user = UserEntity(email = email, passwordHash = password, name = name)
+                val hashedPassword = hashPassword(password)
+                val user = UserEntity(email = email.lowercase(), passwordHash = hashedPassword, name = name)
                 app.container.database.userDao().insertUser(user)
                 Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
                 finish()
@@ -47,5 +60,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.tvLogin.setOnClickListener {
             finish()
         }
+    }
+
+    private fun hashPassword(password: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(password.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
     }
 }

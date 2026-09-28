@@ -20,7 +20,8 @@ class AppContainer(context: Context) {
             database.farmActivityDao(),
             database.logDao(),
             database.diseaseRecordDao(),
-            database.expenseDao()
+            database.expenseDao(),
+            database.pestDao()
         )
     }
 
@@ -29,6 +30,6 @@ class AppContainer(context: Context) {
     }
 
     val diseaseDetectionRepository: DiseaseDetectionRepository by lazy {
-        DiseaseDetectionRepository(database.diseaseRecordDao())
+        DiseaseDetectionRepository(database.diseaseRecordDao(), context)
     }
 }

@@ -39,31 +39,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.auth.LoginActivity" android:exported="false"/>
-        <activity android:name=".ui.auth.RegisterActivity" android:exported="false"/>
+        <activity android:name=".ui.auth.LoginActivity" android:exported="true"/>
+        <activity android:name=".ui.auth.RegisterActivity" android:exported="true"/>
 
         <!-- Main Dashboard Navigation Activity -->
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.SmartCropCare" />
 
         <!-- Crop Overview & Lifecycle Management -->
         <activity
             android:name=".ui.overview.CropOverviewActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.SmartCropCare" />
 
         <!-- AI Leaf Disease Detection Activity -->
         <activity
             android:name=".ui.disease.AiDiseaseDetectionActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.SmartCropCare" />
 
         <!-- Digital Crop Passport Activity -->
         <activity
             android:name=".ui.passport.DigitalCropPassportActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/Theme.SmartCropCare" />
 
         <!-- File Provider for PDF and Image sharing -->

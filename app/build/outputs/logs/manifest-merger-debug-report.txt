@@ -203,21 +203,21 @@ ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:38:17-77
 	android:name
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:38:27-74
 activity#com.smartcropcare.app.ui.auth.LoginActivity
-ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:42:9-83
+ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:42:9-82
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:42:57-81
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:42:57-80
 	android:name
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:42:19-56
 activity#com.smartcropcare.app.ui.auth.RegisterActivity
-ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:43:9-86
+ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:43:9-85
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:43:60-84
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:43:60-83
 	android:name
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:43:19-59
 activity#com.smartcropcare.app.ui.main.MainActivity
 ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:46:9-49:58
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:48:13-37
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:48:13-36
 	android:theme
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:49:13-55
 	android:name
@@ -225,7 +225,7 @@ ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:46:9-49:58
 activity#com.smartcropcare.app.ui.overview.CropOverviewActivity
 ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:52:9-55:58
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:54:13-37
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:54:13-36
 	android:theme
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:55:13-55
 	android:name
@@ -233,7 +233,7 @@ ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:52:9-55:58
 activity#com.smartcropcare.app.ui.disease.AiDiseaseDetectionActivity
 ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:58:9-61:58
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:60:13-37
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:60:13-36
 	android:theme
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:61:13-55
 	android:name
@@ -241,7 +241,7 @@ ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:58:9-61:58
 activity#com.smartcropcare.app.ui.passport.DigitalCropPassportActivity
 ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:64:9-67:58
 	android:exported
-		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:66:13-37
+		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:66:13-36
 	android:theme
 		ADDED from D:\SMART CROP CARE\app\src\main\AndroidManifest.xml:67:13-55
 	android:name

@@ -20,8 +20,8 @@
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_add_crop.xml"
     },
     {
-        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/fragment_home.xml",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_home.xml"
+        "merged": "com.smartcropcare.app-mergeDebugResources-45:/layout/activity_crop_overview.xml",
+        "source": "com.smartcropcare.app-main-48:/layout/activity_crop_overview.xml"
     },
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_crop_list.xml",
@@ -30,6 +30,10 @@
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_log_fertilizer.xml",
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_fertilizer.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_log_harvest.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_harvest.xml"
     },
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\fragment_profile.xml",
@@ -50,6 +54,10 @@
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_login.xml",
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\dialog_log_pest.xml",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_pest.xml"
     },
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-mergeDebugResources-45:\\layout\\activity_digital_crop_passport.xml",

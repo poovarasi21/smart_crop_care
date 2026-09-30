@@ -30,13 +30,14 @@ class AddCropBottomSheetDialog(
 
         binding.btnSaveCrop.setOnClickListener {
             val name = binding.etCropName.text?.toString()?.trim() ?: ""
-            val variety = binding.etCropVariety.text?.toString()?.trim() ?: ""
+            val rawVariety = binding.etCropVariety.text?.toString()?.trim() ?: ""
+            val variety = if (rawVariety.isNotEmpty()) rawVariety else "$name F1 Hybrid"
             val plot = binding.etPlotName.text?.toString()?.trim() ?: "Plot D"
             val acreage = binding.etAcreage.text?.toString()?.toDoubleOrNull() ?: 1.0
             val soil = binding.etSoilType.text?.toString()?.trim() ?: "Red Sandy Loam Soil"
 
-            if (name.isEmpty() || variety.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter Crop and Variety name", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty()) {
+                Toast.makeText(requireContext(), "Please enter Crop name", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

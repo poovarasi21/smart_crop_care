@@ -3,10 +3,7 @@ package com.smartcropcare.app.ui.overview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.smartcropcare.app.data.local.entity.CropEntity
-import com.smartcropcare.app.data.local.entity.ExpenseEntity
-import com.smartcropcare.app.data.local.entity.FertilizerLogEntity
-import com.smartcropcare.app.data.local.entity.IrrigationLogEntity
+import com.smartcropcare.app.data.local.entity.*
 import com.smartcropcare.app.data.repository.CropRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,6 +28,12 @@ class CropOverviewViewModel(
     val expenses: StateFlow<List<ExpenseEntity>> = cropRepository.getExpenses(cropId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
+    val pestRecords: StateFlow<List<PestRecordEntity>> = cropRepository.getPestRecords(cropId)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    val harvests: StateFlow<List<HarvestEntity>> = cropRepository.getHarvests(cropId)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     fun advanceStage() {
         viewModelScope.launch {
             cropRepository.advanceStage(cropId, userId)
@@ -52,6 +55,27 @@ class CropOverviewViewModel(
     fun addExpense(category: String, amount: Double, desc: String) {
         viewModelScope.launch {
             cropRepository.addExpense(cropId, category, amount, desc)
+        }
+    }
+
+    fun logPest(name: String, symptoms: String, management: String, treatment: String) {
+        viewModelScope.launch {
+            cropRepository.logPest(cropId, name, symptoms, management, treatment)
+        }
+    }
+
+    fun logHarvest(quantity: Double, unit: String, sellingPrice: Double, notes: String) {
+        viewModelScope.launch {
+            cropRepository.addHarvest(cropId, userId, quantity, unit, sellingPrice, notes)
+        }
+    }
+
+    fun deleteCrop(onDone: () -> Unit) {
+        viewModelScope.launch {
+            crop.value?.let {
+                cropRepository.deleteCrop(it)
+                onDone()
+            }
         }
     }
 

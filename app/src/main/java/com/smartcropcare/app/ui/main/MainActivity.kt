@@ -14,6 +14,7 @@ import com.smartcropcare.app.ui.home.HomeFragment
 import com.smartcropcare.app.ui.profile.ProfileFragment
 import com.smartcropcare.app.ui.location.LocationSelectDialog
 import com.smartcropcare.app.utils.LocaleHelper
+import com.smartcropcare.app.utils.NotificationHelper
 import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.launch
 import android.Manifest
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        NotificationHelper.createNotificationChannel(this)
         setupTopBarActions()
         setupBottomNavigation()
         fetchLocation()
@@ -175,11 +177,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnNotification.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Advisory: High humidity & rain expected by 3 PM. Postpone foliar spray.",
-                Toast.LENGTH_LONG
-            ).show()
+            val sessionManager = SessionManager(this)
+            if (!sessionManager.isNotificationsEnabled()) {
+                Toast.makeText(this, getString(R.string.notifications_disabled_toast), Toast.LENGTH_SHORT).show()
+            } else {
+                NotificationHelper.sendFarmNotification(
+                    this,
+                    101,
+                    getString(R.string.app_name),
+                    getString(R.string.farm_advisory_notification)
+                )
+                Toast.makeText(
+                    this,
+                    getString(R.string.farm_advisory_notification),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 

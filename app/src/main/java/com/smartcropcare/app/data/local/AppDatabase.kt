@@ -19,9 +19,10 @@ import kotlinx.coroutines.CoroutineScope
         FertilizerLogEntity::class,
         DiseaseRecordEntity::class,
         ExpenseEntity::class,
-        PestRecordEntity::class
+        PestRecordEntity::class,
+        HarvestEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -32,6 +33,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun diseaseRecordDao(): DiseaseRecordDao
     abstract fun expenseDao(): ExpenseDao
     abstract fun pestDao(): PestDao
+    abstract fun harvestDao(): HarvestDao
 
     companion object {
         @Volatile
@@ -85,6 +87,26 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `harvests` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        `cropId` INTEGER NOT NULL,
+                        `userId` INTEGER NOT NULL,
+                        `date` TEXT NOT NULL,
+                        `quantity` REAL NOT NULL,
+                        `unit` TEXT NOT NULL,
+                        `sellingPrice` REAL NOT NULL,
+                        `revenue` REAL NOT NULL,
+                        `notes` TEXT NOT NULL DEFAULT ''
+                    )
+                    """.trimIndent()
+                )
+            }
+        }
+
         fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -92,8 +114,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "smart_crop_care.db"
                 )
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
-                .fallbackToDestructiveMigration()
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
                 .build()
                 INSTANCE = instance
                 instance

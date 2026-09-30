@@ -30,9 +30,9 @@ class HomeViewModel(
     val weather: StateFlow<WeatherData> = weatherRepository.currentWeather
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), WeatherData())
 
-    fun refreshWeather(location: Location?) {
-        viewModelScope.launch(Dispatchers.IO) {
-            weatherRepository.refreshWeatherTelemetry(location)
+    fun refreshWeather(location: Location?, apiKey: String? = null) {
+        viewModelScope.launch {
+            weatherRepository.refreshWeatherTelemetry(location, apiKey)
         }
     }
 
@@ -44,7 +44,8 @@ class HomeViewModel(
 
     fun addNewCrop(crop: CropEntity) {
         viewModelScope.launch {
-            cropRepository.insertCrop(crop)
+            val resolvedCrop = if (crop.userId <= 0L) crop.copy(userId = userId) else crop
+            cropRepository.insertCrop(resolvedCrop)
         }
     }
 

@@ -18,7 +18,9 @@ import com.smartcropcare.app.R
 import com.smartcropcare.app.SmartCropCareApp
 import com.smartcropcare.app.data.model.DiagnosisResult
 import com.smartcropcare.app.databinding.ActivityAiDiseaseDetectionBinding
+import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.launch
+import android.view.View
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -73,15 +75,37 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
         }
     }
 
+    private var targetCropId: Long = 1L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAiDiseaseDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        targetCropId = intent.getLongExtra("EXTRA_CROP_ID", -1L)
+        val initialCropName = intent.getStringExtra("EXTRA_CROP_NAME")
+        if (!initialCropName.isNullOrEmpty()) {
+            viewModel.selectCrop(initialCropName)
+        }
+
+        lifecycleScope.launch {
+            val sessionManager = SessionManager(this@AiDiseaseDetectionActivity)
+            val app = application as SmartCropCareApp
+            if (targetCropId == -1L) {
+                app.container.cropRepository.getAllActiveCrops(sessionManager.getUserId()).collect { crops ->
+                    if (crops.isNotEmpty() && targetCropId == -1L) {
+                        targetCropId = crops[0].id
+                        if (initialCropName.isNullOrEmpty()) {
+                            viewModel.selectCrop(crops[0].name)
+                        }
+                    }
+                }
+            }
+        }
+
         setupToolbar()
         setupCropChips()
         setupCaptureButtons()
-        startLaserScanAnimation()
         observeViewModel()
     }
 
@@ -118,20 +142,34 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
         }
 
         binding.btnSaveMedicalHistory.setOnClickListener {
-            viewModel.saveToMedicalHistory(1)
+            val validCropId = if (targetCropId > 0) targetCropId else 1L
+            viewModel.saveToMedicalHistory(validCropId)
             Toast.makeText(this, "Diagnosis saved to Crop Medical History!", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnShareKvk.setOnClickListener {
             val result = viewModel.diagnosisResult.value
+            val isTamil = com.smartcropcare.app.utils.LocaleHelper.getLanguage(this) == "ta"
+            val displayName = if (isTamil && result.diseaseNameTamil.isNotEmpty()) {
+                "${result.diseaseName} (${result.diseaseNameTamil})"
+            } else {
+                result.diseaseName
+            }
+            val symptoms = if (isTamil && result.observedSymptomsTamil.isNotEmpty()) {
+                result.observedSymptomsTamil.joinToString(", ")
+            } else {
+                result.observedSymptoms.joinToString(", ")
+            }
+
             val shareText = """
-                Smart Crop Care AI Diagnostic Report
+                Smart Crop Care Diagnostic Report
                 Crop: ${result.cropName}
-                Diagnosis: ${result.diseaseName} (${result.confidencePct}% Match)
+                Diagnosis: $displayName (${result.confidencePct.toInt()}% Match)
                 Severity: ${result.severityStage}
-                Symptoms: ${result.observedSymptoms.joinToString(", ")}
-                Recommended Spray: ${result.chemicalTreatment}
-                Organic Control: ${result.organicTreatment}
+                Symptoms: $symptoms
+                Organic / Cultural: ${result.organicTreatment}
+                Targeted Chemical: ${result.chemicalTreatment}
+                Reference: ${result.sourceReference}
             """.trimIndent()
 
             val sendIntent = Intent().apply {
@@ -176,18 +214,24 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
     }
 
     private fun startLaserScanAnimation() {
-        laserAnimator = ObjectAnimator.ofFloat(
-            binding.viewLaserLine,
-            "translationY",
-            0f,
-            500f
-        ).apply {
-            duration = 2000
-            repeatMode = ValueAnimator.REVERSE
-            repeatCount = ValueAnimator.INFINITE
-            interpolator = AccelerateDecelerateInterpolator()
-            start()
+        if (laserAnimator == null) {
+            laserAnimator = ObjectAnimator.ofFloat(
+                binding.viewLaserLine,
+                "translationY",
+                0f,
+                500f
+            ).apply {
+                duration = 2000
+                repeatMode = ValueAnimator.REVERSE
+                repeatCount = ValueAnimator.INFINITE
+                interpolator = AccelerateDecelerateInterpolator()
+            }
         }
+        laserAnimator?.start()
+    }
+
+    private fun stopLaserScanAnimation() {
+        laserAnimator?.cancel()
     }
 
     private fun observeViewModel() {
@@ -200,12 +244,26 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.isAnalyzing.collect { isAnalyzing ->
                 binding.tvScanStateBadge.text = if (isAnalyzing) getString(R.string.scan_state_scanning) else getString(R.string.scan_state_complete)
+                if (isAnalyzing) {
+                    binding.viewLaserLine.visibility = View.VISIBLE
+                    startLaserScanAnimation()
+                } else {
+                    binding.viewLaserLine.visibility = View.GONE
+                    stopLaserScanAnimation()
+                }
             }
         }
     }
 
     private fun bindDiagnosisResult(result: DiagnosisResult) {
-        binding.tvDiseaseName.text = result.diseaseName
+        val isTamil = com.smartcropcare.app.utils.LocaleHelper.getLanguage(this) == "ta"
+        val displayName = if (isTamil && result.diseaseNameTamil.isNotEmpty()) {
+            "${result.diseaseName}\n(${result.diseaseNameTamil})"
+        } else {
+            result.diseaseName
+        }
+
+        binding.tvDiseaseName.text = displayName
         binding.tvDiseasePathogen.text = result.pathogen
         binding.tvConfidenceText.text = getString(R.string.match_format, result.confidencePct.toInt())
         binding.pbConfidence.progress = result.confidencePct.toInt()
@@ -213,7 +271,12 @@ class AiDiseaseDetectionActivity : AppCompatActivity() {
         binding.tvLesionTag.text = result.lesionTag
         binding.tvLesionConfidence.text = getString(R.string.conf_format, result.confidencePct.toInt())
 
-        val symptomsFormatted = result.observedSymptoms.joinToString("\n") { "• $it" }
+        val symptomsList = if (isTamil && result.observedSymptomsTamil.isNotEmpty()) {
+            result.observedSymptomsTamil
+        } else {
+            result.observedSymptoms
+        }
+        val symptomsFormatted = symptomsList.joinToString("\n") { "• $it" }
         binding.tvSymptomsList.text = symptomsFormatted
         binding.tvOrganicTreatment.text = result.organicTreatment
         binding.tvChemicalTreatment.text = result.chemicalTreatment

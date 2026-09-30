@@ -1,25 +1,36 @@
 package com.smartcropcare.app.ui.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.smartcropcare.app.R
 import com.smartcropcare.app.SmartCropCareApp
-import com.smartcropcare.app.data.local.entity.UserEntity
 import com.smartcropcare.app.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.launch
-import java.security.MessageDigest
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
 
+    private val viewModel: AuthViewModel by viewModels {
+        val app = application as SmartCropCareApp
+        AuthViewModel.Factory(app.container.authRepository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        lifecycleScope.launch {
+            viewModel.isLoading.collect { loading ->
+                binding.btnRegister.isEnabled = !loading
+                binding.btnRegister.text = if (loading) getString(R.string.loading) else getString(R.string.register_button)
+            }
+        }
 
         binding.btnRegister.setOnClickListener {
             val name = binding.etName.text.toString().trim()
@@ -27,43 +38,36 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding.etPassword.text.toString().trim()
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_fill_all_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_invalid_email), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (password.length < 6) {
-                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_password_length), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val app = application as SmartCropCareApp
-            lifecycleScope.launch {
-                val existing = app.container.database.userDao().getUserByEmail(email)
-                if (existing != null) {
-                    Toast.makeText(this@RegisterActivity, "Email already registered", Toast.LENGTH_SHORT).show()
-                    return@launch
-                }
-                
-                val hashedPassword = hashPassword(password)
-                val user = UserEntity(email = email.lowercase(), passwordHash = hashedPassword, name = name)
-                app.container.database.userDao().insertUser(user)
-                Toast.makeText(this@RegisterActivity, "Registration successful", Toast.LENGTH_SHORT).show()
-                finish()
+            viewModel.register(name, email, password) { result ->
+                result.fold(
+                    onSuccess = {
+                        Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
+                        finish()
+                    },
+                    onFailure = { error ->
+                        val msg = error.message ?: getString(R.string.register_failed)
+                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                    }
+                )
             }
         }
 
         binding.tvLogin.setOnClickListener {
             finish()
         }
-    }
-
-    private fun hashPassword(password: String): String {
-        val bytes = MessageDigest.getInstance("SHA-256").digest(password.toByteArray())
-        return bytes.joinToString("") { "%02x".format(it) }
     }
 }

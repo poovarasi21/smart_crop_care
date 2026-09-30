@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.smartcropcare.app.R
@@ -18,11 +19,16 @@ import com.smartcropcare.app.data.model.CropStage
 import com.smartcropcare.app.databinding.ActivityCropOverviewBinding
 import com.smartcropcare.app.ui.dialogs.AddExpenseDialog
 import com.smartcropcare.app.ui.dialogs.LogFertilizerDialog
+import com.smartcropcare.app.ui.dialogs.LogHarvestDialog
+import com.smartcropcare.app.ui.dialogs.LogPestDialog
 import com.smartcropcare.app.ui.dialogs.LogWaterDialog
 import com.smartcropcare.app.ui.disease.AiDiseaseDetectionActivity
 import com.smartcropcare.app.ui.passport.DigitalCropPassportActivity
 import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class CropOverviewActivity : AppCompatActivity() {
 
@@ -80,7 +86,7 @@ class CropOverviewActivity : AppCompatActivity() {
         }
 
         binding.btnMarkAlertDone.setOnClickListener {
-            Toast.makeText(this, "Micronutrient spray marked as completed!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Priority task marked completed!", Toast.LENGTH_SHORT).show()
             binding.btnMarkAlertDone.isEnabled = false
             binding.btnMarkAlertDone.text = "Completed ✓"
         }
@@ -92,37 +98,59 @@ class CropOverviewActivity : AppCompatActivity() {
         binding.cardOpWater.setOnClickListener {
             LogWaterDialog { liters, duration, method ->
                 viewModel.logIrrigation(liters, duration, method)
+                Toast.makeText(this, "Irrigation logged successfully", Toast.LENGTH_SHORT).show()
             }.show(supportFragmentManager, LogWaterDialog.TAG)
         }
 
         binding.cardOpFertilizer.setOnClickListener {
             LogFertilizerDialog { nutrient, dosage, method ->
                 viewModel.logFertilizer(nutrient, dosage, method)
+                Toast.makeText(this, "Fertilizer dose logged", Toast.LENGTH_SHORT).show()
             }.show(supportFragmentManager, LogFertilizerDialog.TAG)
         }
 
         binding.cardOpDisease.setOnClickListener {
-            startActivity(Intent(this, AiDiseaseDetectionActivity::class.java))
+            val intent = Intent(this, AiDiseaseDetectionActivity::class.java).apply {
+                putExtra("EXTRA_CROP_ID", cropId)
+                viewModel.crop.value?.let { putExtra("EXTRA_CROP_NAME", it.name) }
+            }
+            startActivity(intent)
         }
 
-        binding.cardOpPhotos.setOnClickListener {
-            Toast.makeText(this, "14 growth photos logged for this crop timeline", Toast.LENGTH_SHORT).show()
+        binding.cardOpPest.setOnClickListener {
+            LogPestDialog { name, symptoms, management, treatment ->
+                viewModel.logPest(name, symptoms, management, treatment)
+                Toast.makeText(this, "Pest incident recorded", Toast.LENGTH_SHORT).show()
+            }.show(supportFragmentManager, LogPestDialog.TAG)
+        }
+
+        binding.cardOpHarvest.setOnClickListener {
+            LogHarvestDialog { qty, unit, price, notes ->
+                viewModel.logHarvest(qty, unit, price, notes)
+                Toast.makeText(this, "Harvest yield logged", Toast.LENGTH_SHORT).show()
+            }.show(supportFragmentManager, LogHarvestDialog.TAG)
         }
 
         binding.cardOpExpenses.setOnClickListener {
             AddExpenseDialog { category, amount, desc ->
                 viewModel.addExpense(category, amount, desc)
+                Toast.makeText(this, "Expense recorded", Toast.LENGTH_SHORT).show()
             }.show(supportFragmentManager, AddExpenseDialog.TAG)
         }
 
         binding.btnAddDailyLog.setOnClickListener {
             LogWaterDialog { liters, duration, method ->
                 viewModel.logIrrigation(liters, duration, method)
+                Toast.makeText(this, "Irrigation logged", Toast.LENGTH_SHORT).show()
             }.show(supportFragmentManager, LogWaterDialog.TAG)
         }
 
         binding.btnScanLeafAi.setOnClickListener {
-            startActivity(Intent(this, AiDiseaseDetectionActivity::class.java))
+            val intent = Intent(this, AiDiseaseDetectionActivity::class.java).apply {
+                putExtra("EXTRA_CROP_ID", cropId)
+                viewModel.crop.value?.let { putExtra("EXTRA_CROP_NAME", it.name) }
+            }
+            startActivity(intent)
         }
     }
 
@@ -130,6 +158,28 @@ class CropOverviewActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.crop.collect { crop ->
                 crop?.let { bindCropData(it) }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.expenses.collect { list ->
+                val total = list.sumOf { it.amount }
+                binding.tvExpensesTotal.text = "₹${String.format(Locale.ROOT, "%.2f", total)}"
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.pestRecords.collect { list ->
+                binding.tvPestSummary.text = if (list.isEmpty()) "No pests logged" else "${list.size} logged (${list[0].pestName})"
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.harvests.collect { list ->
+                val totalRev = list.sumOf { it.revenue }
+                val totalQty = list.sumOf { it.quantity }
+                val unit = list.firstOrNull()?.unit ?: "Kg"
+                binding.tvHarvestSummary.text = if (list.isEmpty()) "0 Harvested" else "${totalQty.toInt()} $unit (₹${totalRev.toInt()})"
             }
         }
     }
@@ -143,7 +193,21 @@ class CropOverviewActivity : AppCompatActivity() {
         binding.pbCircularHealth.progress = crop.healthScore
         binding.tvHealthScoreGrade.text = crop.healthStatus.uppercase()
         binding.tvPlantingDate.text = crop.plantingDate
-        binding.tvCropAgeDap.text = "${crop.cropAgeDays} Days"
+
+        // Calculate DAP (Days After Planting) dynamically
+        try {
+            val format = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+            val plantDate = format.parse(crop.plantingDate)
+            if (plantDate != null) {
+                val diffDays = ((Date().time - plantDate.time) / (1000 * 60 * 60 * 24)).coerceAtLeast(0)
+                binding.tvCropAgeDap.text = "$diffDays Days"
+            } else {
+                binding.tvCropAgeDap.text = "${crop.cropAgeDays} Days"
+            }
+        } catch (e: Exception) {
+            binding.tvCropAgeDap.text = "${crop.cropAgeDays} Days"
+        }
+
         binding.tvStageTitle.text = crop.stageName
         binding.tvStageCompletionPct.text = "Stage Completion: ${crop.stageCompletionPct}%"
         binding.tvHarvestCountdownBadge.text = "Harvest in ${crop.harvestCountdownDays}d"

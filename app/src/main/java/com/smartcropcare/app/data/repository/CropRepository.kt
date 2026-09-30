@@ -14,7 +14,8 @@ class CropRepository(
     private val logDao: LogDao,
     private val diseaseRecordDao: DiseaseRecordDao,
     private val expenseDao: ExpenseDao,
-    private val pestDao: PestDao
+    private val pestDao: PestDao,
+    private val harvestDao: HarvestDao
 ) {
     fun getAllActiveCrops(userId: Long): Flow<List<CropEntity>> = cropDao.getAllActiveCrops(userId)
     fun getAllActivities(userId: Long): Flow<List<FarmActivityEntity>> = activityDao.getAllActivities(userId)
@@ -23,6 +24,8 @@ class CropRepository(
     suspend fun getCropByIdDirect(id: Long, userId: Long): CropEntity? = cropDao.getCropByIdDirect(id, userId)
 
     suspend fun insertCrop(crop: CropEntity): Long = cropDao.insertCrop(crop)
+    suspend fun updateCrop(crop: CropEntity) = cropDao.updateCrop(crop)
+    suspend fun deleteCrop(crop: CropEntity) = cropDao.deleteCrop(crop)
 
     suspend fun advanceStage(cropId: Long, userId: Long) {
         val current = cropDao.getCropByIdDirect(cropId, userId) ?: return
@@ -48,7 +51,7 @@ class CropRepository(
     suspend fun logIrrigation(cropId: Long, liters: Int, duration: Int, method: String, notes: String = ""): Long {
         val log = IrrigationLogEntity(
             cropId = cropId,
-            date = "Today " + SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date()),
+            date = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault()).format(Date()),
             litersApplied = liters,
             durationMinutes = duration,
             method = method,
@@ -66,11 +69,11 @@ class CropRepository(
     suspend fun logFertilizer(cropId: Long, nutrient: String, dosage: String, method: String): Long {
         val log = FertilizerLogEntity(
             cropId = cropId,
-            date = "Today " + SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date()),
+            date = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault()).format(Date()),
             nutrientName = nutrient,
             dosage = dosage,
             applicationMethod = method,
-            adherenceStatus = "On-Time"
+            adherenceStatus = "Applied"
         )
         return logDao.insertFertilizerLog(log)
     }
@@ -106,6 +109,34 @@ class CropRepository(
             treatmentNotes = treatment
         )
         return pestDao.insertPest(record)
+    }
+
+    // Harvest / Yield / Profit Integration
+    fun getHarvests(cropId: Long): Flow<List<HarvestEntity>> =
+        harvestDao.getHarvestsByCropId(cropId)
+
+    suspend fun addHarvest(cropId: Long, userId: Long, quantity: Double, unit: String, sellingPrice: Double, notes: String = ""): Long {
+        val revenue = quantity * sellingPrice
+        val harvest = HarvestEntity(
+            cropId = cropId,
+            userId = userId,
+            date = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Date()),
+            quantity = quantity,
+            unit = unit,
+            sellingPrice = sellingPrice,
+            revenue = revenue,
+            notes = notes
+        )
+        return harvestDao.insertHarvest(harvest)
+    }
+
+    suspend fun getTotalRevenue(cropId: Long): Double = harvestDao.getTotalRevenue(cropId) ?: 0.0
+    suspend fun getTotalYield(cropId: Long): Double = harvestDao.getTotalYield(cropId) ?: 0.0
+
+    suspend fun calculateProfitLoss(cropId: Long): Double {
+        val revenue = getTotalRevenue(cropId)
+        val expenses = getTotalExpense(cropId)
+        return revenue - expenses
     }
 
     suspend fun getIrrigationCount(cropId: Long): Int = logDao.getIrrigationSessionCount(cropId)

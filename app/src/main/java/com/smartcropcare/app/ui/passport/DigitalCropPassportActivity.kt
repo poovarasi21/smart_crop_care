@@ -12,6 +12,7 @@ import com.smartcropcare.app.utils.QrCodeHelper
 import com.smartcropcare.app.utils.SessionManager
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class DigitalCropPassportActivity : AppCompatActivity() {
 
@@ -81,21 +82,24 @@ class DigitalCropPassportActivity : AppCompatActivity() {
 
             crop?.let {
                 currentCrop = it
-                bindData(it)
+                val totalExp = app.container.cropRepository.getTotalExpense(it.id)
+                val totalRev = app.container.cropRepository.getTotalRevenue(it.id)
+                val totalYield = app.container.cropRepository.getTotalYield(it.id)
+                bindData(it, totalExp, totalRev, totalYield)
             }
         }
     }
 
-    private fun bindData(crop: CropEntity) {
+    private fun bindData(crop: CropEntity, realExpense: Double, realRevenue: Double, realYield: Double) {
         binding.tvCertificateId.text = "ID: ${crop.certificateId}"
         binding.tvPassportCropVariety.text = "${crop.name} • ${crop.variety} ${crop.hybridType}"
         binding.tvPassportPlotInfo.text = "${crop.plotName} • ${crop.acreage} Acres"
         binding.tvPassportSoilInfo.text = crop.soilType
 
         binding.tvKpiHealthScore.text = "${crop.healthScore} / 100"
-        binding.tvKpiYield.text = "${crop.estimatedYieldTonPerAcre} T/Acre"
-        binding.tvKpiInvestment.text = "₹${crop.totalInvestment.toInt()}"
-        binding.tvKpiRevenue.text = "₹${crop.projectedRevenue.toInt()}"
+        binding.tvKpiYield.text = if (realYield > 0) "${String.format(Locale.ROOT, "%.1f", realYield)} Recorded" else "${crop.estimatedYieldTonPerAcre} T/Acre"
+        binding.tvKpiInvestment.text = if (realExpense > 0) "₹${realExpense.toInt()}" else "₹${crop.totalInvestment.toInt()}"
+        binding.tvKpiRevenue.text = if (realRevenue > 0) "₹${realRevenue.toInt()}" else "₹${crop.projectedRevenue.toInt()}"
 
         // Generate Scannable QR Code
         try {

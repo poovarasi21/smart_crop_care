@@ -52,7 +52,9 @@ class CropListFragment : Fragment() {
 
         binding.btnAddCropFab.setOnClickListener {
             AddCropBottomSheetDialog { newCrop ->
-                viewModel.addNewCrop(newCrop)
+                val sessionManager = SessionManager(requireContext())
+                val cropWithUser = newCrop.copy(userId = sessionManager.getUserId())
+                viewModel.addNewCrop(cropWithUser)
             }.show(childFragmentManager, AddCropBottomSheetDialog.TAG)
         }
 

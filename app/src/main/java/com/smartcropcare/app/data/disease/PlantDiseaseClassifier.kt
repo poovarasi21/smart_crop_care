@@ -39,15 +39,17 @@ class PlantDiseaseClassifier(private val context: Context) {
             val missingMsg = context.getString(R.string.ai_model_missing_msg)
             return DiagnosisResult(
                 cropName = selectedCropName,
-                diseaseName = context.getString(R.string.ai_low_confidence_title),
+                diseaseName = "TFLite Model Unavailable",
+                diseaseNameTamil = "மாதிரி கோப்பு கிடைக்கவில்லை",
                 pathogen = missingMsg,
                 confidencePct = 0.0,
                 severityStage = "--",
                 observedSymptoms = listOf(missingMsg),
+                observedSymptomsTamil = listOf("TFLite மாதிரி கோப்பு assets-ல் இல்லை"),
                 organicTreatment = "N/A",
                 chemicalTreatment = "N/A",
                 isSafe = false,
-                lesionTag = "N/A"
+                lesionTag = "Model Required"
             )
         }
 

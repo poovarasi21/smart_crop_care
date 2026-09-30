@@ -8,6 +8,10 @@
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_compost.xml"
     },
     {
+        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_pest_control.xml.flat",
+        "source": "com.smartcropcare.app-main-48:/drawable/ic_pest_control.xml"
+    },
+    {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_ic_download.xml.flat",
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_download.xml"
     },
@@ -76,8 +80,12 @@
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\tomato_harvest.jpg"
     },
     {
-        "merged": "com.smartcropcare.app-debug-46:/layout_fragment_home.xml.flat",
-        "source": "com.smartcropcare.app-main-48:/layout/fragment_home.xml"
+        "merged": "com.smartcropcare.app-debug-46:/drawable_ic_harvest.xml.flat",
+        "source": "com.smartcropcare.app-main-48:/drawable/ic_harvest.xml"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_log_pest.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_pest.xml"
     },
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_fragment_crop_list.xml.flat",
@@ -124,6 +132,10 @@
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\ic_photo_library.xml"
     },
     {
+        "merged": "com.smartcropcare.app-debug-46:/layout_activity_crop_overview.xml.flat",
+        "source": "com.smartcropcare.app-main-48:/layout/activity_crop_overview.xml"
+    },
+    {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_location_select.xml.flat",
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_location_select.xml"
     },
@@ -154,6 +166,10 @@
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_tomato_plant.jpg.flat",
         "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\drawable\\tomato_plant.jpg"
+    },
+    {
+        "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\layout_dialog_log_harvest.xml.flat",
+        "source": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-main-48:\\layout\\dialog_log_harvest.xml"
     },
     {
         "merged": "C:\\Users\\ELCOT\\.gradle\\daemon\\9.1.0\\com.smartcropcare.app-debug-46:\\drawable_bg_pill_white.xml.flat",

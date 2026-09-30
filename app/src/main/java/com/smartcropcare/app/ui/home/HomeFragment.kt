@@ -64,11 +64,13 @@ class HomeFragment : Fragment() {
     }
 
     fun updateWeather(location: Location) {
-        viewModel.refreshWeather(location)
+        val sessionManager = SessionManager(requireContext())
+        viewModel.refreshWeather(location, sessionManager.getWeatherApiKey())
     }
 
     private fun fetchWeatherWithLocation() {
         val sessionManager = SessionManager(requireContext())
+        val apiKey = sessionManager.getWeatherApiKey()
         if (!sessionManager.isCurrentLocationMode()) {
             val savedLoc = sessionManager.getLocation()
             if (savedLoc != null) {
@@ -76,7 +78,7 @@ class HomeFragment : Fragment() {
                     latitude = savedLoc.latitude
                     longitude = savedLoc.longitude
                 }
-                viewModel.refreshWeather(loc)
+                viewModel.refreshWeather(loc, apiKey)
                 return
             }
         }
@@ -85,10 +87,10 @@ class HomeFragment : Fragment() {
             ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                viewModel.refreshWeather(location)
+                viewModel.refreshWeather(location, apiKey)
             }
         } else {
-            viewModel.refreshWeather(null)
+            viewModel.refreshWeather(null, apiKey)
         }
     }
 

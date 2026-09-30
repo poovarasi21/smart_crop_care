@@ -59,7 +59,10 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
   public final MaterialCardView cardOpFertilizer;
 
   @NonNull
-  public final MaterialCardView cardOpPhotos;
+  public final MaterialCardView cardOpHarvest;
+
+  @NonNull
+  public final MaterialCardView cardOpPest;
 
   @NonNull
   public final MaterialCardView cardOpWater;
@@ -89,6 +92,9 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
   public final TextView tvHarvestCountdownBadge;
 
   @NonNull
+  public final TextView tvHarvestSummary;
+
+  @NonNull
   public final TextView tvHeaderScientific;
 
   @NonNull
@@ -110,6 +116,9 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
   public final TextView tvOverviewTitle;
 
   @NonNull
+  public final TextView tvPestSummary;
+
+  @NonNull
   public final TextView tvPlantingDate;
 
   @NonNull
@@ -124,17 +133,18 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
       @NonNull ImageView btnNavPassport, @NonNull MaterialButton btnScanLeafAi,
       @NonNull ImageView btnShareCrop, @NonNull MaterialButton btnSnoozeAlert,
       @NonNull MaterialCardView cardOpDisease, @NonNull MaterialCardView cardOpExpenses,
-      @NonNull MaterialCardView cardOpFertilizer, @NonNull MaterialCardView cardOpPhotos,
-      @NonNull MaterialCardView cardOpWater, @NonNull ImageView ivCropFoliage,
-      @NonNull Toolbar overviewToolbar, @NonNull ProgressBar pbCircularHealth,
-      @NonNull ProgressBar pbSoilMoisture, @NonNull LinearLayout stageTrackContainer,
-      @NonNull TextView tvCropAgeDap, @NonNull TextView tvExpensesTotal,
-      @NonNull TextView tvHarvestCountdownBadge, @NonNull TextView tvHeaderScientific,
+      @NonNull MaterialCardView cardOpFertilizer, @NonNull MaterialCardView cardOpHarvest,
+      @NonNull MaterialCardView cardOpPest, @NonNull MaterialCardView cardOpWater,
+      @NonNull ImageView ivCropFoliage, @NonNull Toolbar overviewToolbar,
+      @NonNull ProgressBar pbCircularHealth, @NonNull ProgressBar pbSoilMoisture,
+      @NonNull LinearLayout stageTrackContainer, @NonNull TextView tvCropAgeDap,
+      @NonNull TextView tvExpensesTotal, @NonNull TextView tvHarvestCountdownBadge,
+      @NonNull TextView tvHarvestSummary, @NonNull TextView tvHeaderScientific,
       @NonNull TextView tvHeaderVariety, @NonNull TextView tvHealthScoreGrade,
       @NonNull TextView tvHealthScoreValue, @NonNull TextView tvMoistureOptimalBadge,
       @NonNull TextView tvOverviewSubtitle, @NonNull TextView tvOverviewTitle,
-      @NonNull TextView tvPlantingDate, @NonNull TextView tvStageCompletionPct,
-      @NonNull TextView tvStageTitle) {
+      @NonNull TextView tvPestSummary, @NonNull TextView tvPlantingDate,
+      @NonNull TextView tvStageCompletionPct, @NonNull TextView tvStageTitle) {
     this.rootView = rootView;
     this.btnAddDailyLog = btnAddDailyLog;
     this.btnAdvanceStage = btnAdvanceStage;
@@ -147,7 +157,8 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
     this.cardOpDisease = cardOpDisease;
     this.cardOpExpenses = cardOpExpenses;
     this.cardOpFertilizer = cardOpFertilizer;
-    this.cardOpPhotos = cardOpPhotos;
+    this.cardOpHarvest = cardOpHarvest;
+    this.cardOpPest = cardOpPest;
     this.cardOpWater = cardOpWater;
     this.ivCropFoliage = ivCropFoliage;
     this.overviewToolbar = overviewToolbar;
@@ -157,6 +168,7 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
     this.tvCropAgeDap = tvCropAgeDap;
     this.tvExpensesTotal = tvExpensesTotal;
     this.tvHarvestCountdownBadge = tvHarvestCountdownBadge;
+    this.tvHarvestSummary = tvHarvestSummary;
     this.tvHeaderScientific = tvHeaderScientific;
     this.tvHeaderVariety = tvHeaderVariety;
     this.tvHealthScoreGrade = tvHealthScoreGrade;
@@ -164,6 +176,7 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
     this.tvMoistureOptimalBadge = tvMoistureOptimalBadge;
     this.tvOverviewSubtitle = tvOverviewSubtitle;
     this.tvOverviewTitle = tvOverviewTitle;
+    this.tvPestSummary = tvPestSummary;
     this.tvPlantingDate = tvPlantingDate;
     this.tvStageCompletionPct = tvStageCompletionPct;
     this.tvStageTitle = tvStageTitle;
@@ -262,9 +275,15 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.cardOpPhotos;
-      MaterialCardView cardOpPhotos = ViewBindings.findChildViewById(rootView, id);
-      if (cardOpPhotos == null) {
+      id = R.id.cardOpHarvest;
+      MaterialCardView cardOpHarvest = ViewBindings.findChildViewById(rootView, id);
+      if (cardOpHarvest == null) {
+        break missingId;
+      }
+
+      id = R.id.cardOpPest;
+      MaterialCardView cardOpPest = ViewBindings.findChildViewById(rootView, id);
+      if (cardOpPest == null) {
         break missingId;
       }
 
@@ -322,6 +341,12 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvHarvestSummary;
+      TextView tvHarvestSummary = ViewBindings.findChildViewById(rootView, id);
+      if (tvHarvestSummary == null) {
+        break missingId;
+      }
+
       id = R.id.tvHeaderScientific;
       TextView tvHeaderScientific = ViewBindings.findChildViewById(rootView, id);
       if (tvHeaderScientific == null) {
@@ -364,6 +389,12 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvPestSummary;
+      TextView tvPestSummary = ViewBindings.findChildViewById(rootView, id);
+      if (tvPestSummary == null) {
+        break missingId;
+      }
+
       id = R.id.tvPlantingDate;
       TextView tvPlantingDate = ViewBindings.findChildViewById(rootView, id);
       if (tvPlantingDate == null) {
@@ -384,12 +415,12 @@ public final class ActivityCropOverviewBinding implements ViewBinding {
 
       return new ActivityCropOverviewBinding((CoordinatorLayout) rootView, btnAddDailyLog,
           btnAdvanceStage, btnBack, btnMarkAlertDone, btnNavPassport, btnScanLeafAi, btnShareCrop,
-          btnSnoozeAlert, cardOpDisease, cardOpExpenses, cardOpFertilizer, cardOpPhotos,
-          cardOpWater, ivCropFoliage, overviewToolbar, pbCircularHealth, pbSoilMoisture,
+          btnSnoozeAlert, cardOpDisease, cardOpExpenses, cardOpFertilizer, cardOpHarvest,
+          cardOpPest, cardOpWater, ivCropFoliage, overviewToolbar, pbCircularHealth, pbSoilMoisture,
           stageTrackContainer, tvCropAgeDap, tvExpensesTotal, tvHarvestCountdownBadge,
-          tvHeaderScientific, tvHeaderVariety, tvHealthScoreGrade, tvHealthScoreValue,
-          tvMoistureOptimalBadge, tvOverviewSubtitle, tvOverviewTitle, tvPlantingDate,
-          tvStageCompletionPct, tvStageTitle);
+          tvHarvestSummary, tvHeaderScientific, tvHeaderVariety, tvHealthScoreGrade,
+          tvHealthScoreValue, tvMoistureOptimalBadge, tvOverviewSubtitle, tvOverviewTitle,
+          tvPestSummary, tvPlantingDate, tvStageCompletionPct, tvStageTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

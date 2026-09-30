@@ -2,369 +2,452 @@ package com.smartcropcare.app.data.disease
 
 import com.smartcropcare.app.data.model.DiagnosisResult
 
+data class DiseaseInfo(
+    val englishName: String,
+    val tamilName: String,
+    val pathogen: String,
+    val symptomsEn: List<String>,
+    val symptomsTa: List<String>,
+    val severity: String,
+    val culturalOrganic: String,
+    val biological: String,
+    val chemicalTreatment: String,
+    val prevention: String,
+    val source: String = "TNAU Agritech Portal / ICAR-IIHR Guidelines"
+)
+
 object DiseaseKnowledgeBase {
 
+    private const val KVK_DISCLAIMER = "Follow the current product label and local agricultural/KVK recommendation before application."
+
     val SUPPORTED_CROPS = listOf(
-        "Tomato",
-        "Ladies Finger / Okra",
-        "Brinjal / Eggplant",
-        "Chilli",
-        "Potato",
         "Rice",
-        "Cotton"
+        "Tomato",
+        "Chilli",
+        "Brinjal",
+        "Groundnut",
+        "Cotton",
+        "Ladies Finger / Okra"
+    )
+
+    private val RICE_DISEASES = mapOf(
+        "blast" to DiseaseInfo(
+            englishName = "Rice Leaf Blast (Magnaporthe oryzae)",
+            tamilName = "நெல் இலை கருகல் நோய் (பிளாஸ்ட்)",
+            pathogen = "Fungal ascomycete active in cool night / high relative humidity (>90%)",
+            symptomsEn = listOf(
+                "Spindle-shaped or eye-shaped lesions with greyish center and dark brown margin",
+                "Lesions coalesce causing drying of leaf blades"
+            ),
+            symptomsTa = listOf(
+                "கண் வடிவ அல்லது கதிர் வடிவ பழுப்பு விளிம்பு புள்ளிகள்",
+                "புள்ளிகள் இணைந்து இலைகள் காய்ந்து கருகும்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Avoid excess nitrogen fertilizer application. Split urea dosage. Seed treatment with Pseudomonas fluorescens @ 10g/kg seed.",
+            biological = "Foliar spray of Pseudomonas fluorescens @ 5g/Litre or Trichoderma viride @ 5g/Litre.",
+            chemicalTreatment = "Spray Tricyclazole 75% WP @ 0.6g/Litre or Isoprothiolane 40% EC @ 1.5ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Use certified blast-resistant seeds. Maintain uniform shallow water layer."
+        ),
+        "brown spot" to DiseaseInfo(
+            englishName = "Rice Brown Spot (Bipolaris oryzae)",
+            tamilName = "நெல் பழுப்பு புள்ளி நோய்",
+            pathogen = "Fungal pathogen prevalent in nutrient-deficient and poorly drained soils",
+            symptomsEn = listOf(
+                "Small, oval to circular dark brown spots resembling sesame seeds on leaves and glumes",
+                "Yellow chlorotic halo surrounds mature lesions"
+            ),
+            symptomsTa = listOf(
+                "எள் போன்ற சிறிய முட்டை வடிவ பழுப்பு புள்ளிகள்",
+                "புள்ளிகளைச் சுற்றி மஞ்சள் வளையம் காணப்படும்"
+            ),
+            severity = "Stage 1: Mild",
+            culturalOrganic = "Apply balanced NPK with recommended potassium (potash) and zinc sulfate (25 kg/ha).",
+            biological = "Seed treatment with Trichoderma harzianum @ 4g/kg seed.",
+            chemicalTreatment = "Spray Mancozeb 75% WP @ 2g/Litre or Propiconazole 25% EC @ 1ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Soil testing, correcting potash and zinc deficiencies."
+        ),
+        "sheath blight" to DiseaseInfo(
+            englishName = "Rice Sheath Blight (Rhizoctonia solani)",
+            tamilName = "நெல் உறை அழுகல் நோய்",
+            pathogen = "Soil-borne and water-borne fungal sclerotia favored by dense canopy and high humidity",
+            symptomsEn = listOf(
+                "Oval greenish-grey water-soaked lesions on leaf sheath near waterline",
+                "Lesions coalesce and spread upwards with irregular brown margins"
+            ),
+            symptomsTa = listOf(
+                "தண்ணீர் மட்டத்திற்கு மேல் இலையுறை பகுதியில் சாம்பல் நிற ஈர கறைகள்",
+                "கறைகள் மேல்நோக்கி பரவி ஒழுங்கற்ற பழுப்பு நிற விளிம்புகளுடன் தோன்றும்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Wider planting spacing (20x15 cm) to improve air circulation. Avoid excessive nitrogen.",
+            biological = "Soil application of Pseudomonas fluorescens @ 2.5 kg/ha mixed with 50 kg FYM.",
+            chemicalTreatment = "Spray Hexaconazole 5% SC @ 2ml/Litre or Validamycin 3% L @ 2ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Deep summer ploughing to bury sclerotia."
+        ),
+        "bacterial leaf blight" to DiseaseInfo(
+            englishName = "Rice Bacterial Leaf Blight (Xanthomonas oryzae pv. oryzae)",
+            tamilName = "நெல் பாக்டீரியா இலை கருகல் நோய்",
+            pathogen = "Vascular bacterial pathogen spread through irrigation water, typhoons, and wind-blown rain",
+            symptomsEn = listOf(
+                "Water-soaked to yellowish-white wavy stripes starting from leaf tips and margins",
+                "Milky bacterial ooze droplets visible on infected leaves in early morning"
+            ),
+            symptomsTa = listOf(
+                "இலை நுனியிலிருந்து தொடங்கும் அலை அலையான மஞ்சள் வெள்ளை கோடுகள்",
+                "காலை நேரத்தில் இலைகளில் பால் போன்ற பாக்டீரியா துளிகள் காணப்படும்"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Drain excess water from field. Apply fresh cow dung extract supernatant (20%).",
+            biological = "Foliar spray with Bacillus amyloliquefaciens @ 5ml/Litre.",
+            chemicalTreatment = "Spray Streptocycline @ 0.1g/Litre + Copper Oxychloride 50% WP @ 2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Avoid clipping seedling tips during transplanting."
+        )
+    )
+
+    private val TOMATO_DISEASES = mapOf(
+        "early blight" to DiseaseInfo(
+            englishName = "Tomato Early Blight (Alternaria solani)",
+            tamilName = "தக்காளி ஆரம்பகால கருகல் நோய்",
+            pathogen = "Fungal pathogen prevalent in humid warm climates with fluctuating rain",
+            symptomsEn = listOf(
+                "Dark brown circular spots with concentric target-board rings on lower foliage",
+                "Yellow chlorotic halo surrounding necrotic spots causing leaf drop"
+            ),
+            symptomsTa = listOf(
+                "கீழ் இலைகளில் வட்ட வடிவ அடர் பழுப்பு நிற இலக்கு போன்ற வளையப் புள்ளிகள்",
+                "புள்ளிகளைச் சுற்றி மஞ்சள் வளையம் உருவாகி இலைகள் உதிரும்"
+            ),
+            severity = "Stage 1: Mild",
+            culturalOrganic = "Prune infected bottom leaves. Mulch soil to prevent soil splash onto foliage.",
+            biological = "Spray Trichoderma viride @ 5g/Litre or Neem seed kernel extract (NSKE 5%).",
+            chemicalTreatment = "Spray Mancozeb 75% WP @ 2g/Litre or Chlorothalonil 75% WP @ 2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Crop rotation with non-solanaceous crops. Drip irrigation to minimize leaf wetness."
+        ),
+        "late blight" to DiseaseInfo(
+            englishName = "Tomato Late Blight (Phytophthora infestans)",
+            tamilName = "தக்காளி பிற்கால கருகல் நோய்",
+            pathogen = "Destructive oomycete pathogen active in cool, foggy, water-saturated leaves",
+            symptomsEn = listOf(
+                "Rapidly expanding water-soaked greasy brown lesions on leaves and stems",
+                "White cottony fungal growth on underside of leaves under humid conditions"
+            ),
+            symptomsTa = listOf(
+                "இலை மற்றும் தண்டுகளில் வேகமாகப் பரவும் எண்ணெய் பசை போன்ற பழுப்பு கறைகள்",
+                "அதிக ஈரப்பதத்தில் இலைகளின் அடிப்பகுதியில் வெள்ளை நிற பூஞ்சை வளர்ச்சி"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Immediately eradicate and bag severely blighted vines. Avoid overhead irrigation.",
+            biological = "Preventive spray with Trichoderma harzianum @ 5g/Litre.",
+            chemicalTreatment = "Spray Cymoxanil 8% + Mancozeb 64% WP @ 2g/Litre or Metalaxyl-M + Mancozeb @ 2.5g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Plant certified resistant hybrids such as Arka Rakshak or Arka Abhed."
+        ),
+        "leaf curl" to DiseaseInfo(
+            englishName = "Tomato Leaf Curl Virus (ToLCV)",
+            tamilName = "தக்காளி இலை சுருட்டை வைரஸ் நோய்",
+            pathogen = "Begomovirus transmitted exclusively by Whiteflies (Bemisia tabaci). Note: Viruses cannot be cured by fungicides/antibiotics.",
+            symptomsEn = listOf(
+                "Upward curling and puckering of leaf margins with thickened veins",
+                "Severe stunting of bushes with bushy appearance and complete failure of fruit set"
+            ),
+            symptomsTa = listOf(
+                "இலை விளிம்புகள் மேல்நோக்கி சுருண்டு தடிமனாதல்",
+                "செடி வளர்ச்சி குன்றி புதர் போல் தோற்றமளித்தல் மற்றும் பூ பிடிப்பு நிற்றல்"
+            ),
+            severity = "Stage 2: Moderate Stunting",
+            culturalOrganic = "Install yellow sticky traps (15/acre) to monitor whiteflies. Spray Neem oil (10,000 ppm) @ 2ml/Litre.",
+            biological = "Release Chrysoperla carnea predators @ 10,000/ha.",
+            chemicalTreatment = "Note: Chemicals cannot cure the virus; control whitefly vector: Spray Imidacloprid 17.8% SL @ 0.3ml/Litre or Acetamiprid 20% SP @ 0.2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Grow border crops like maize or sorghum as windbreaks/vector barriers."
+        ),
+        "spotted wilt" to DiseaseInfo(
+            englishName = "Tomato Spotted Wilt Virus (TSWV / Groundnut Bud Necrosis)",
+            tamilName = "தக்காளி புள்ளி வாடல் வைரஸ் நோய்",
+            pathogen = "Tospovirus transmitted by Thrips (Frankliniella schultzei / Thrips palmi). Note: Viral pathogen.",
+            symptomsEn = listOf(
+                "Bronzing and purpling of terminal leaves with necrotic ring spots",
+                "Terminal bud necrosis, wilting of top shoots, and chlorotic concentric rings on fruits"
+            ),
+            symptomsTa = listOf(
+                "மேல் இலைகள் வெண்கல நிறமாக மாறி வளையப் புள்ளிகள் தோன்றுதல்",
+                "நுனி மொட்டு காய்ந்து போதல் மற்றும் காய்களில் வளைய வடிவ புள்ளிகள்"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Uproot and bury infected plants immediately. Set up blue sticky traps (15/acre) for thrips.",
+            biological = "Spray Lecanicillium lecanii @ 5g/Litre against thrips.",
+            chemicalTreatment = "Note: Chemicals cannot cure virus; manage thrips vector: Spray Fipronil 5% SC @ 1.5ml/Litre or Spinetoram 11.7% SC @ 0.8ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Control weed hosts around field margins."
+        )
+    )
+
+    private val CHILLI_DISEASES = mapOf(
+        "leaf curl" to DiseaseInfo(
+            englishName = "Chilli Leaf Curl Virus (Begomovirus)",
+            tamilName = "மிளகாய் இலை சுருட்டை நோய்",
+            pathogen = "Gemini virus transmitted by whiteflies and aggravated by thrips/mites infestation",
+            symptomsEn = listOf(
+                "Upward boat-shaped curling and puckering of leaf lamina",
+                "Reduced leaf size, shortened internodes, and brittle foliage"
+            ),
+            symptomsTa = listOf(
+                "இலைகள் படகு வடிவில் மேல்நோக்கி சுருண்டு கூடுதல்",
+                "இலை அளவு குறைந்து கணுவிடை பகுதி சுருங்குதல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Eradicate alternate weed hosts. Spray Agniastra or Neem seed kernel extract (NSKE 5%).",
+            biological = "Spray Beauveria bassiana @ 5g/Litre.",
+            chemicalTreatment = "Note: Vector control only: Spray Diafenthiuron 50% WP @ 1.2g/Litre or Cyantraniliprole 10.26% OD @ 1.2ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Raise nursery under 40-mesh nylon insect-proof net."
+        ),
+        "mosaic" to DiseaseInfo(
+            englishName = "Chilli Mosaic Virus (Potyvirus / CMV)",
+            tamilName = "மிளகாய் மொசைக் வைரஸ் நோய்",
+            pathogen = "Plant virus transmitted by Aphids (Aphis gossypii / Myzus persicae)",
+            symptomsEn = listOf(
+                "Mottling with alternating dark and light green patches on leaves",
+                "Filiform / shoe-string appearance of leaves with stunted canopy"
+            ),
+            symptomsTa = listOf(
+                "இலைகளில் வெளிர் மற்றும் அடர் பச்சை நிற திட்டுகள் (மொசைக்)",
+                "இலைகள் நூல் போல் சுருங்கி குறுகியதாக மாறுதல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Intercrop with maize or cowpea as barrier crops. Spray 5% NSKE.",
+            biological = "Spray Verticillium lecanii @ 5g/Litre against aphids.",
+            chemicalTreatment = "Note: Vector control: Spray Dimethoate 30% EC @ 1.7ml/Litre or Thiamethoxam 25% WG @ 0.3g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Use virus-free certified seedlings."
+        ),
+        "leaf spot" to DiseaseInfo(
+            englishName = "Chilli Cercospora Leaf Spot & Anthracnose (Colletotrichum capsici)",
+            tamilName = "மிளகாய் இலைப்புள்ளி மற்றும் பழ அழுகல் நோய்",
+            pathogen = "Fungal pathogen causing fruit rot / die-back under high humidity and rains",
+            symptomsEn = listOf(
+                "Circular spots with light grey centers and dark brown margins on leaves",
+                "Sunken circular necrotic patches on ripe chilli pods with black fruiting acervuli"
+            ),
+            symptomsTa = listOf(
+                "சாம்பல் நிற மையமும் அடர் பழுப்பு விளிம்பும் கொண்ட இலைப்புள்ளிகள்",
+                "பழுத்த மிளகாய் காய்களில் பள்ளமான கரும்புள்ளிகள் மற்றும் அழுகல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Collect and burn infected fruit debris. Spray Pseudomonas fluorescens @ 10g/Litre.",
+            biological = "Trichoderma viride seed treatment @ 4g/kg.",
+            chemicalTreatment = "Spray Azoxystrobin 23% SC @ 1ml/Litre or Difenoconazole 25% EC @ 0.5ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Seed treatment with Thiram or Captan @ 2g/kg seed."
+        )
+    )
+
+    private val BRINJAL_DISEASES = mapOf(
+        "bacterial wilt" to DiseaseInfo(
+            englishName = "Brinjal Bacterial Wilt (Ralstonia solanacearum)",
+            tamilName = "கத்தரி பாக்டீரியா வாடல் நோய்",
+            pathogen = "Soil-borne bacterium invading vascular bundles through root wounds",
+            symptomsEn = listOf(
+                "Rapid sudden wilting and collapse of entire green plant without prior yellowing",
+                "Browning of vascular bundle; milky bacterial streaming when cut stem is placed in clear water"
+            ),
+            symptomsTa = listOf(
+                "இலைகள் மஞ்சள் நிறமாக மாறாமல் திடீரென செடி முழுவதும் வாடுதல்",
+                "தண்டின் உள்பகுதி பழுப்பு நிறமாதல்; வெட்டிய தண்டை தண்ணீரில் வைத்தால் வெள்ளை திரவம் வடிதல்"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Crop rotation with non-solanaceous crops (e.g. maize, paddy). Apply lime to acidic soil.",
+            biological = "Soil drenching with Pseudomonas fluorescens @ 10g/Litre.",
+            chemicalTreatment = "Soil drenching around root zone with Streptocycline @ 0.2g/Litre + Copper Oxychloride @ 2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Use resistant rootstocks or varieties like Pant Rituraj."
+        ),
+        "phomopsis" to DiseaseInfo(
+            englishName = "Brinjal Phomopsis Blight & Fruit Rot (Phomopsis vexans)",
+            tamilName = "கத்தரி போமோப்சிஸ் கருகல் மற்றும் காய் அழுகல் நோய்",
+            pathogen = "Seed-borne and air-borne fungus prevalent in hot humid monsoon weather",
+            symptomsEn = listOf(
+                "Circular brown spots with pale centers on leaves and seedlings causing damping off",
+                "Large watery sunken soft rot lesions on fruits covered with black pycnidia dots"
+            ),
+            symptomsTa = listOf(
+                "இலைகளில் வெளிர் மையத்துடன் கூடிய வட்ட வடிவ பழுப்பு புள்ளிகள்",
+                "காய்களில் நீர் ஊறிய பள்ளமான மென்மையான அழுகல் மற்றும் கருப்பு புள்ளிகள்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Destroy infected crop residue after harvest. Avoid flood irrigation.",
+            biological = "Seed treatment with Trichoderma viride @ 4g/kg.",
+            chemicalTreatment = "Spray Zineb 75% WP @ 2g/Litre or Mancozeb 75% WP @ 2.5g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Hot water seed treatment at 50°C for 30 minutes."
+        ),
+        "little leaf" to DiseaseInfo(
+            englishName = "Brinjal Little Leaf (Phytoplasma)",
+            tamilName = "கத்தரி சிறு இலை நோய்",
+            pathogen = "Phytoplasma vector transmitted by Leafhopper (Hishimonus phycitis)",
+            symptomsEn = listOf(
+                "Extreme reduction in leaf lamina size producing tiny crowded leaves with rosette bushy habit",
+                "Floral parts phyllody turning into green leaf-like structures without fruiting"
+            ),
+            symptomsTa = listOf(
+                "இலைகள் மிகச் சிறியதாக மாறி கொத்து கொத்தாக புதர் போல் தோற்றமளித்தல்",
+                "பூக்கள் இலை போன்ற வடிவமாக மாறி காய் பிடிக்காமல் போதல்"
+            ),
+            severity = "Stage 2: Severe Stunting",
+            culturalOrganic = "Rogue out and bury infected plants as soon as observed.",
+            biological = "Neem oil spray @ 3ml/Litre.",
+            chemicalTreatment = "Note: Phytoplasma has no direct chemical cure; manage leafhopper vector: Spray Dimethoate 30% EC @ 1.5ml/Litre or Monocrotophos 36% SL @ 1ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Control leafhoppers in nursery stage."
+        )
+    )
+
+    private val GROUNDNUT_DISEASES = mapOf(
+        "tikka" to DiseaseInfo(
+            englishName = "Groundnut Tikka / Cercospora Leaf Spot (Cercospora arachidicola / C. personata)",
+            tamilName = "நிலக்கடலை டிக்கா இலைப்புள்ளி நோய்",
+            pathogen = "Air-borne and soil-borne fungal spores active during warm rainy spells",
+            symptomsEn = listOf(
+                "Early leaf spot: reddish-brown circular spots with prominent yellow halo on upper surface",
+                "Late leaf spot: carbon-black circular spots without prominent halo mostly on lower leaf surface"
+            ),
+            symptomsTa = listOf(
+                "ஆரம்ப இலைப்புள்ளி: மஞ்சள் வளையத்துடன் கூடிய செம்பழுப்பு நிற வட்ட வடிவ புள்ளிகள்",
+                "பிற்கால இலைப்புள்ளி: மஞ்சள் வளையமில்லாத அடர் கருப்பு புள்ளிகள், இலை உதிர்தல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Collect and burn crop trash. Spray 3% neem oil or 5% NSKE.",
+            biological = "Foliar spray with Pseudomonas fluorescens @ 5g/Litre.",
+            chemicalTreatment = "Spray Carbendazim 12% + Mancozeb 63% WP @ 2g/Litre or Tebuconazole 25.9% EC @ 1ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Crop rotation with sorghum, pearl millet, or maize."
+        ),
+        "rust" to DiseaseInfo(
+            englishName = "Groundnut Rust (Puccinia arachidis)",
+            tamilName = "நிலக்கடலை துரு நோய்",
+            pathogen = "Fungal rust producing orange-brown pustules on lower leaf surface",
+            symptomsEn = listOf(
+                "Small, orange-brown pustules (uredinia) on lower epidermis of leaves",
+                "Leaves curl, turn brown, and dry up prematurely while remaining attached to stem"
+            ),
+            symptomsTa = listOf(
+                "இலைகளின் அடிப்பகுதியில் சிறிய ஆரஞ்சு-பழுப்பு நிற துரு கொப்புளங்கள்",
+                "இலைகள் காய்ந்து பழுப்பு நிறமாக மாறி உதிராமல் செடியிலேயே ஒட்டியிருத்தல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Intercrop groundnut with pearl millet or sorghum (4:1 ratio).",
+            biological = "Spray Verticillium chlamydosporium @ 5g/Litre.",
+            chemicalTreatment = "Spray Chlorothalonil 75% WP @ 2g/Litre or Hexaconazole 5% EC @ 1ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Early sowing before monsoon peak to avoid severe infection."
+        ),
+        "collar rot" to DiseaseInfo(
+            englishName = "Groundnut Stem / Collar Rot (Sclerotium rolfsii / Aspergillus niger)",
+            tamilName = "நிலக்கடலை தண்டு / கழுத்து அழுகல் நோய்",
+            pathogen = "Soil-borne fungal pathogen attacking groundnut seedlings and collar region",
+            symptomsEn = listOf(
+                "Water-soaked brown lesion at collar region near soil line covered by white mycelial fan",
+                "Mustard-seed-like brown sclerotia bodies on stem base and rapid wilting of branches"
+            ),
+            symptomsTa = listOf(
+                "மண்ணை ஒட்டிய தண்டுப் பகுதியில் வெள்ளை நிற பூஞ்சை இழைகளுடன் கூடிய அழுகல்",
+                "கடுகு போன்ற பழுப்பு நிற பூஞ்சை மணிகள் மற்றும் செடிகள் திடீரென வாடுதல்"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Deep summer ploughing to expose sclerotia. Apply Trichoderma enriched neem cake.",
+            biological = "Soil application of Trichoderma viride @ 4 kg/ha mixed with 250 kg FYM.",
+            chemicalTreatment = "Seed treatment with Carbendazim @ 2g/kg seed or soil drenching with Captan 50% WP @ 2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Ensure proper soil drainage and avoid deep sowing."
+        )
+    )
+
+    private val COTTON_DISEASES = mapOf(
+        "alternaria" to DiseaseInfo(
+            englishName = "Cotton Alternaria Leaf Blight (Alternaria macrospora)",
+            tamilName = "பருத்தி ஆல்டர்நேரியா இலைக்கருகல் நோய்",
+            pathogen = "Air-borne and seed-borne fungal pathogen prevalent in humid rainy periods",
+            symptomsEn = listOf(
+                "Pale brown circular to irregular spots with concentric rings on leaves",
+                "Spots coalesce forming large necrotic patches and shot-hole appearance"
+            ),
+            symptomsTa = listOf(
+                "இலைகளில் வளையங்களுடன் கூடிய வெளிர் பழுப்பு வட்ட வடிவ புள்ளிகள்",
+                "புள்ளிகள் இணைந்து பெரிய கருகல் மற்றும் இலைகளில் துளைகள் விழுதல்"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Remove and burn crop residue after picking. Spray 5% NSKE.",
+            biological = "Foliar spray with Pseudomonas fluorescens @ 5g/Litre.",
+            chemicalTreatment = "Spray Mancozeb 75% WP @ 2g/Litre or Propiconazole 25% EC @ 1ml/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Acid delinting of cotton seeds before planting."
+        ),
+        "fusarium wilt" to DiseaseInfo(
+            englishName = "Cotton Fusarium Wilt (Fusarium oxysporum f. sp. vasinfectum)",
+            tamilName = "பருத்தி பியூசாரியம் வாடல் நோய்",
+            pathogen = "Soil-borne fungus invading xylem vessels in black cotton soils",
+            symptomsEn = listOf(
+                "Yellowing and browning starting along leaf margins, followed by dropping of foliage",
+                "Dark brown vascular discoloration inside split stem; plant wilts from base upward"
+            ),
+            symptomsTa = listOf(
+                "இலை விளிம்புகளில் மஞ்சள் நிறம் தோன்றி உதிர்ந்து போதல்",
+                "தண்டை பிளந்து பார்த்தால் உள்பகுதியில் கருமை நிற வாஸ்குலார் திசுக்கள் காணப்படுதல்"
+            ),
+            severity = "Stage 3: Severe",
+            culturalOrganic = "Crop rotation with non-host crops like sorghum or bajra for 3 years.",
+            biological = "Soil application of Trichoderma viride @ 5 kg/ha with FYM.",
+            chemicalTreatment = "Seed treatment with Carboxin + Thiram @ 2.5g/kg seed; drench collar with Copper Oxychloride @ 3g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Grow wilt-resistant cotton cultivars."
+        ),
+        "bacterial blight" to DiseaseInfo(
+            englishName = "Cotton Bacterial Blight / Black Arm (Xanthomonas citri pv. malvacearum)",
+            tamilName = "பருத்தி பாக்டீரியா இலைக்கருகல் / கருந்தண்டு நோய்",
+            pathogen = "Seed-borne and rain-splashed bacterium causing angular spots and black arm symptoms",
+            symptomsEn = listOf(
+                "Water-soaked angular leaf spots delimited by leaf veinlets",
+                "Elongated black lesions on petiole and stem (Black Arm), causing breaking of branches"
+            ),
+            symptomsTa = listOf(
+                "நரம்புகளால் கட்டுப்படுத்தப்பட்ட கோண வடிவ நீர் ஊறிய புள்ளிகள்",
+                "தண்டு மற்றும் இலைக்காம்பில் நீண்ட கருப்பு நிற புண்கள் (கருந்தண்டு)"
+            ),
+            severity = "Stage 2: Moderate",
+            culturalOrganic = "Collect and burn plant debris. Early thinning of dense stands.",
+            biological = "Seed treatment with Pseudomonas fluorescens @ 10g/kg.",
+            chemicalTreatment = "Spray Streptocycline @ 0.1g/Litre + Copper Oxychloride 50% WP @ 2g/Litre.\n\n⚠️ $KVK_DISCLAIMER",
+            prevention = "Seed delinting with concentrated Sulphuric acid (100ml/kg seed)."
+        )
     )
 
     fun getDiagnosis(cropName: String, diseaseName: String, confidencePct: Double): DiagnosisResult {
         val cropKey = cropName.lowercase().trim()
         val diseaseKey = diseaseName.lowercase().trim()
 
-        return when {
-            cropKey.contains("tomato") -> getTomatoDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("okra") || cropKey.contains("ladies finger") -> getOkraDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("brinjal") || cropKey.contains("eggplant") -> getBrinjalDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("chilli") -> getChilliDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("potato") -> getPotatoDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("rice") -> getRiceDiagnosis(diseaseKey, confidencePct)
-            cropKey.contains("cotton") -> getCottonDiagnosis(diseaseKey, confidencePct)
-            else -> getTomatoDiagnosis(diseaseKey, confidencePct)
+        val info: DiseaseInfo = when {
+            cropKey.contains("rice") || cropKey.contains("paddy") -> findDisease(RICE_DISEASES, diseaseKey, RICE_DISEASES["blast"]!!)
+            cropKey.contains("tomato") -> findDisease(TOMATO_DISEASES, diseaseKey, TOMATO_DISEASES["early blight"]!!)
+            cropKey.contains("chilli") || cropKey.contains("chili") -> findDisease(CHILLI_DISEASES, diseaseKey, CHILLI_DISEASES["leaf curl"]!!)
+            cropKey.contains("brinjal") || cropKey.contains("eggplant") -> findDisease(BRINJAL_DISEASES, diseaseKey, BRINJAL_DISEASES["bacterial wilt"]!!)
+            cropKey.contains("groundnut") || cropKey.contains("peanut") -> findDisease(GROUNDNUT_DISEASES, diseaseKey, GROUNDNUT_DISEASES["tikka"]!!)
+            cropKey.contains("cotton") -> findDisease(COTTON_DISEASES, diseaseKey, COTTON_DISEASES["alternaria"]!!)
+            else -> findDisease(TOMATO_DISEASES, diseaseKey, TOMATO_DISEASES["early blight"]!!)
         }
+
+        return DiagnosisResult(
+            cropName = cropName,
+            diseaseName = info.englishName,
+            diseaseNameTamil = info.tamilName,
+            pathogen = info.pathogen,
+            confidencePct = confidencePct,
+            severityStage = info.severity,
+            observedSymptoms = info.symptomsEn,
+            observedSymptomsTamil = info.symptomsTa,
+            culturalManagement = info.culturalOrganic,
+            biologicalManagement = info.biological,
+            chemicalTreatment = info.chemicalTreatment,
+            organicTreatment = info.culturalOrganic,
+            prevention = info.prevention,
+            sourceReference = info.source,
+            isSafe = false,
+            lesionTag = "Verified ICAR/TNAU"
+        )
     }
 
-    private fun getTomatoDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("late blight") -> DiagnosisResult(
-                cropName = "Tomato",
-                diseaseName = "Tomato Late Blight (Phytophthora infestans)",
-                pathogen = "Oomycete pathogen active in cool, water-saturated leaves",
-                confidencePct = confidencePct,
-                severityStage = if (confidencePct > 85) "Stage 2: Moderate" else "Stage 1: Mild",
-                observedSymptoms = listOf(
-                    "Dark water-soaked lesions expanding rapidly on leaf tips",
-                    "White cottony fungal growth on lower leaf surfaces during high humidity"
-                ),
-                organicTreatment = "Prune affected leaves. Spray Trichoderma viride @ 5g/Litre or Neem oil 3%.",
-                chemicalTreatment = "Apply Cymoxanil + Mancozeb @ 2g/Litre or Metalaxyl-M @ 2g/Litre immediately.",
-                isSafe = false,
-                lesionTag = "Blight #1"
-            )
-            diseaseKey.contains("yellow leaf curl") -> DiagnosisResult(
-                cropName = "Tomato",
-                diseaseName = "Tomato Yellow Leaf Curl Virus (TYLCV)",
-                pathogen = "Begomovirus vector-borne transmission via Whitefly (Bemisia tabaci)",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Severe Stunting",
-                observedSymptoms = listOf(
-                    "Upward curling and yellowing of leaf margins",
-                    "Stunted plant growth and significant reduction in fruit set"
-                ),
-                organicTreatment = "Install yellow sticky traps (15/acre). Spray Neem Seed Kernel Extract (NSKE 5%).",
-                chemicalTreatment = "Control whiteflies using Imidacloprid 17.8% SL @ 0.3ml/Litre or Acetamiprid 20% SP @ 0.2g/Litre.",
-                isSafe = false,
-                lesionTag = "Curl #1"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Tomato",
-                diseaseName = "Healthy Tomato Canopy",
-                pathogen = "No pathological lesions detected",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf(
-                    "Vibrant green leaf lamina without chlorosis or necrosis",
-                    "Optimal turgor and healthy vascular structure"
-                ),
-                organicTreatment = "Maintain regular drip irrigation and balanced organic compost application.",
-                chemicalTreatment = "No chemical intervention required.",
-                isSafe = true,
-                lesionTag = "Optimal"
-            )
-            else -> DiagnosisResult(
-                cropName = "Tomato",
-                diseaseName = "Tomato Early Blight (Alternaria solani)",
-                pathogen = "Fungal pathogen prevalent in humid night / warm day thermal cycles",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Mild Lesions",
-                observedSymptoms = listOf(
-                    "Concentric dark brown rings with 'target board' pattern on foliage",
-                    "Chlorotic yellow halo surrounding brown necrotic spots"
-                ),
-                organicTreatment = "Prune infected lower foliage. Avoid overhead sprinkler irrigation to reduce leaf wetness.",
-                chemicalTreatment = "Apply Mancozeb 75% WP @ 2g/Litre or Copper Oxychloride 50% WP @ 2.5g/Litre.",
-                isSafe = false,
-                lesionTag = "Target Spot"
-            )
+    private fun findDisease(map: Map<String, DiseaseInfo>, query: String, default: DiseaseInfo): DiseaseInfo {
+        for ((key, value) in map) {
+            if (query.contains(key) || key.contains(query)) {
+                return value
+            }
         }
-    }
-
-    private fun getOkraDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("powdery mildew") -> DiagnosisResult(
-                cropName = "Ladies Finger / Okra",
-                diseaseName = "Okra Powdery Mildew (Erysiphe cichoracearum)",
-                pathogen = "Ascomycete fungal spores multiplying under shade and dry atmospheric conditions",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Mild",
-                observedSymptoms = listOf(
-                    "White powdery fungal patches on upper leaf surfaces",
-                    "Premature yellowing and drying of lower canopy leaves"
-                ),
-                organicTreatment = "Spray wettable Sulphur 80% WP @ 3g/Litre or Cow milk spray (10% concentration).",
-                chemicalTreatment = "Spray Dinocap 48% EC @ 1ml/Litre or Hexaconazole 5% EC @ 1ml/Litre.",
-                isSafe = false,
-                lesionTag = "Powder #1"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Ladies Finger / Okra",
-                diseaseName = "Healthy Okra Canopy",
-                pathogen = "No vector or fungal symptoms",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Normal green foliage with intact veinal architecture"),
-                organicTreatment = "Regular weeding and soil aeration.",
-                chemicalTreatment = "No chemical spray needed.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Ladies Finger / Okra",
-                diseaseName = "Yellow Vein Mosaic Virus (YVMV)",
-                pathogen = "Begomovirus transmitted by Whiteflies",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Mild",
-                observedSymptoms = listOf(
-                    "Bright yellow network of veins on foliage",
-                    "Stunted plant growth and small yellowish fruits"
-                ),
-                organicTreatment = "Install yellow sticky traps (12/acre) and spray Neem oil 3000 ppm @ 3ml/Litre.",
-                chemicalTreatment = "Spray Thiamethoxam 25% WG @ 0.3g/Litre or Dimethoate 30% EC @ 1.7ml/Litre.",
-                isSafe = false,
-                lesionTag = "Vein #1"
-            )
-        }
-    }
-
-    private fun getBrinjalDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("little leaf") -> DiagnosisResult(
-                cropName = "Brinjal",
-                diseaseName = "Brinjal Little Leaf (Phytoplasma)",
-                pathogen = "Phytoplasma transmitted by Leafhoppers (Hishimonus phycitis)",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Bushy Stunting",
-                observedSymptoms = listOf(
-                    "Exceedingly reduced leaf lamina size with bushy rosette appearance",
-                    "Phyllody where floral parts transform into leaf-like structures"
-                ),
-                organicTreatment = "Uproot and destroy infected plants. Spray Neem oil @ 5ml/Litre.",
-                chemicalTreatment = "Spray Dimethoate 30% EC @ 1.5ml/Litre to manage leafhopper vector.",
-                isSafe = false,
-                lesionTag = "Rosette"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Brinjal",
-                diseaseName = "Healthy Brinjal Crop",
-                pathogen = "No insect or bacterial infestation",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Intact purple-green foliage and healthy terminal shoots"),
-                organicTreatment = "Maintain regular fertigation.",
-                chemicalTreatment = "No action required.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Brinjal",
-                diseaseName = "Shoot and Fruit Borer (Leucinodes orbonalis)",
-                pathogen = "Lepidopteran larvae internal boring inside shoots and fruits",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Shoot Wilting",
-                observedSymptoms = listOf(
-                    "Withering and wilting of terminal shoots",
-                    "Circular boreholes on fruits filled with larval frass"
-                ),
-                organicTreatment = "Clip and destroy infested shoots. Install pheromone traps with Lucinlure @ 12/acre.",
-                chemicalTreatment = "Spray Chlorantraniliprole 18.5% SC @ 0.4ml/Litre or Emamectin Benzoate 5% SG @ 0.4g/Litre.",
-                isSafe = false,
-                lesionTag = "Borer Hole"
-            )
-        }
-    }
-
-    private fun getChilliDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("anthracnose") || diseaseKey.contains("fruit rot") -> DiagnosisResult(
-                cropName = "Chilli",
-                diseaseName = "Chilli Anthracnose / Fruit Rot (Colletotrichum capsici)",
-                pathogen = "Fungal pathogen favoured by high temperature and relative humidity >80%",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Fruit Rot",
-                observedSymptoms = listOf(
-                    "Circular sunken dark necrotic spots on maturing chili pods",
-                    "Concentric rings of black acervuli fructifications on fruit skin"
-                ),
-                organicTreatment = "Destroy infected fruits. Spray Pseudomonas fluorescens @ 10g/Litre.",
-                chemicalTreatment = "Spray Azoxystrobin 23% SC @ 1ml/Litre or Difenoconazole 25% EC @ 0.5ml/Litre.",
-                isSafe = false,
-                lesionTag = "Fruit Rot"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Chilli",
-                diseaseName = "Healthy Chilli Crop",
-                pathogen = "No thrips or fungal rot detected",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Smooth green leaves without boat-shaped cupping"),
-                organicTreatment = "Maintain proper spacing and moisture.",
-                chemicalTreatment = "No chemical needed.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Chilli",
-                diseaseName = "Chilli Leaf Curl Virus (Begomovirus)",
-                pathogen = "Transmitted by Thrips and Mites",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Upward Curling",
-                observedSymptoms = listOf(
-                    "Upward curling and puckering of leaves (Boat-shaped cupping)",
-                    "Shortened internodes and thickened stunted canopy"
-                ),
-                organicTreatment = "Spray Agniastra or Neem oil 10,000 ppm @ 2ml/Litre.",
-                chemicalTreatment = "Spray Diafenthiuron 50% WP @ 1.2g/Litre or Fipronil 5% SC @ 1.5ml/Litre.",
-                isSafe = false,
-                lesionTag = "Curl #1"
-            )
-        }
-    }
-
-    private fun getPotatoDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("late blight") -> DiagnosisResult(
-                cropName = "Potato",
-                diseaseName = "Potato Late Blight (Phytophthora infestans)",
-                pathogen = "Water mold oomycete multiplying rapidly under wet foggy conditions",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Canopy Decay",
-                observedSymptoms = listOf(
-                    "Water-soaked black lesions rapidly spreading from leaf margins",
-                    "White mildew bloom visible on the underside of leaves during morning hours"
-                ),
-                organicTreatment = "Ridge soil around tubers. Spray Trichoderma harzianum @ 5g/Litre.",
-                chemicalTreatment = "Spray Mancozeb 75% WP @ 2.5g/Litre or Dimethomorph 50% WP @ 1g/Litre.",
-                isSafe = false,
-                lesionTag = "Late Blight"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Potato",
-                diseaseName = "Healthy Potato Foliage",
-                pathogen = "No blight or viral mottle",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Healthy dark green compound foliage"),
-                organicTreatment = "Ensure balanced earthing up and potash fertilization.",
-                chemicalTreatment = "No chemical needed.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Potato",
-                diseaseName = "Potato Early Blight (Alternaria solani)",
-                pathogen = "Air-borne fungal conidia infecting senescing lower leaves",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Mild Target Spots",
-                observedSymptoms = listOf("Brown angular spots with target-like concentric rings"),
-                organicTreatment = "Prune yellowing lower leaves.",
-                chemicalTreatment = "Apply Chlorothalonil 75% WP @ 2g/Litre.",
-                isSafe = false,
-                lesionTag = "Early Blight"
-            )
-        }
-    }
-
-    private fun getRiceDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("bacterial") -> DiagnosisResult(
-                cropName = "Rice",
-                diseaseName = "Rice Bacterial Leaf Blight (Xanthomonas oryzae)",
-                pathogen = "Vascular bacterial pathogen spread by rain wind splashing",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Kresek / Blight",
-                observedSymptoms = listOf(
-                    "Wavy translucent yellow to white stripes expanding along leaf margins",
-                    "Bacterial ooze droplets visible on young leaf lesions during damp morning"
-                ),
-                organicTreatment = "Apply fresh cow dung extract (20%) or Bleaching powder @ 2kg/acre.",
-                chemicalTreatment = "Spray Streptocycline @ 0.1g/Litre + Copper Oxychloride @ 2g/Litre.",
-                isSafe = false,
-                lesionTag = "Bacterial Blight"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Rice",
-                diseaseName = "Healthy Paddy Crop",
-                pathogen = "No blast or bacterial blight spots",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Uniform green erect leaf blades without spindle lesions"),
-                organicTreatment = "Maintain water depth at 2-5cm and split Nitrogen dosage.",
-                chemicalTreatment = "No chemical needed.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Rice",
-                diseaseName = "Rice Leaf Blast (Magnaporthe oryzae)",
-                pathogen = "Ascomycete fungus active under high relative humidity (>90%) and cool nights",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Spindle Lesions",
-                observedSymptoms = listOf("Eye-shaped or spindle-shaped lesions with reddish-brown margins and ash center"),
-                organicTreatment = "Spray Pseudomonas fluorescens @ 10g/Litre as seed & foliar treatment.",
-                chemicalTreatment = "Spray Tricyclazole 75% WP @ 0.6g/Litre or Isoprothiolane 40% EC @ 1.5ml/Litre.",
-                isSafe = false,
-                lesionTag = "Blast Eye"
-            )
-        }
-    }
-
-    private fun getCottonDiagnosis(diseaseKey: String, confidencePct: Double): DiagnosisResult {
-        return when {
-            diseaseKey.contains("curl") -> DiagnosisResult(
-                cropName = "Cotton",
-                diseaseName = "Cotton Leaf Curl Virus (CLCuV)",
-                pathogen = "Begomovirus vector transmitted by Whitefly",
-                confidencePct = confidencePct,
-                severityStage = "Stage 2: Enation & Curling",
-                observedSymptoms = listOf(
-                    "Upward or downward cupping of leaves with leaf-like enations on lower veins",
-                    "Thickened dark green veins and severe crop stunting"
-                ),
-                organicTreatment = "Remove infected plants. Spray Neem oil @ 5ml/Litre.",
-                chemicalTreatment = "Spray Afidopyropen 50g/L SC @ 2ml/Litre or Flonicamid 50% WG @ 0.3g/Litre.",
-                isSafe = false,
-                lesionTag = "Enation"
-            )
-            diseaseKey.contains("healthy") -> DiagnosisResult(
-                cropName = "Cotton",
-                diseaseName = "Healthy Cotton Canopy",
-                pathogen = "No bacterial angular spots",
-                confidencePct = confidencePct,
-                severityStage = "Healthy",
-                observedSymptoms = listOf("Broad lobed green leaves without water-soaked angular lesions"),
-                organicTreatment = "Soil drenching with bio-fertilizers.",
-                chemicalTreatment = "No chemical needed.",
-                isSafe = true,
-                lesionTag = "Healthy"
-            )
-            else -> DiagnosisResult(
-                cropName = "Cotton",
-                diseaseName = "Cotton Angular Leaf Spot / Bacterial Blight (Xanthomonas citri pv. malvacearum)",
-                pathogen = "Seed-borne bacterial pathogen causing black arm symptoms",
-                confidencePct = confidencePct,
-                severityStage = "Stage 1: Angular Spots",
-                observedSymptoms = listOf("Small dark brown angular water-soaked spots bounded by leaf veins"),
-                organicTreatment = "Spray Copper Hydroxide @ 2g/Litre.",
-                chemicalTreatment = "Spray Streptocycline @ 0.1g/Litre + Copper Oxychloride 50% WP @ 2g/Litre.",
-                isSafe = false,
-                lesionTag = "Angular Spot"
-            )
-        }
+        return default
     }
 }

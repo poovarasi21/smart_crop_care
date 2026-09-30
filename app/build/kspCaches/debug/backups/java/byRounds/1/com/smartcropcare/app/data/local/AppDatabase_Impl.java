@@ -19,6 +19,8 @@ import com.smartcropcare.app.data.local.dao.ExpenseDao;
 import com.smartcropcare.app.data.local.dao.ExpenseDao_Impl;
 import com.smartcropcare.app.data.local.dao.FarmActivityDao;
 import com.smartcropcare.app.data.local.dao.FarmActivityDao_Impl;
+import com.smartcropcare.app.data.local.dao.HarvestDao;
+import com.smartcropcare.app.data.local.dao.HarvestDao_Impl;
 import com.smartcropcare.app.data.local.dao.LogDao;
 import com.smartcropcare.app.data.local.dao.LogDao_Impl;
 import com.smartcropcare.app.data.local.dao.PestDao;
@@ -54,10 +56,12 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile PestDao _pestDao;
 
+  private volatile HarvestDao _harvestDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(6) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `passwordHash` TEXT NOT NULL, `name` TEXT NOT NULL, `profilePhotoUri` TEXT, `language` TEXT NOT NULL, `phone` TEXT NOT NULL)");
@@ -68,8 +72,9 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `disease_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `diseaseName` TEXT NOT NULL, `pathogen` TEXT NOT NULL, `confidencePct` REAL NOT NULL, `severityStage` TEXT NOT NULL, `observedSymptoms` TEXT NOT NULL, `organicTreatment` TEXT NOT NULL, `chemicalTreatment` TEXT NOT NULL, `imagePath` TEXT, `status` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `expenses` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `category` TEXT NOT NULL, `amount` REAL NOT NULL, `description` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `pest_records` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `date` TEXT NOT NULL, `pestName` TEXT NOT NULL, `damageSymptoms` TEXT NOT NULL, `managementAction` TEXT NOT NULL, `treatmentNotes` TEXT NOT NULL, `imagePath` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `harvests` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cropId` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `date` TEXT NOT NULL, `quantity` REAL NOT NULL, `unit` TEXT NOT NULL, `sellingPrice` REAL NOT NULL, `revenue` REAL NOT NULL, `notes` TEXT NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7a5b8d2be009bd85e2ee03b96ad9b22e')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '30b0c9ad573231e324a05e7cf6fe5c21')");
       }
 
       @Override
@@ -82,6 +87,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("DROP TABLE IF EXISTS `disease_records`");
         db.execSQL("DROP TABLE IF EXISTS `expenses`");
         db.execSQL("DROP TABLE IF EXISTS `pest_records`");
+        db.execSQL("DROP TABLE IF EXISTS `harvests`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -290,9 +296,28 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoPestRecords + "\n"
                   + " Found:\n" + _existingPestRecords);
         }
+        final HashMap<String, TableInfo.Column> _columnsHarvests = new HashMap<String, TableInfo.Column>(9);
+        _columnsHarvests.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("cropId", new TableInfo.Column("cropId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("userId", new TableInfo.Column("userId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("date", new TableInfo.Column("date", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("quantity", new TableInfo.Column("quantity", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("unit", new TableInfo.Column("unit", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("sellingPrice", new TableInfo.Column("sellingPrice", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("revenue", new TableInfo.Column("revenue", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsHarvests.put("notes", new TableInfo.Column("notes", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysHarvests = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesHarvests = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoHarvests = new TableInfo("harvests", _columnsHarvests, _foreignKeysHarvests, _indicesHarvests);
+        final TableInfo _existingHarvests = TableInfo.read(db, "harvests");
+        if (!_infoHarvests.equals(_existingHarvests)) {
+          return new RoomOpenHelper.ValidationResult(false, "harvests(com.smartcropcare.app.data.local.entity.HarvestEntity).\n"
+                  + " Expected:\n" + _infoHarvests + "\n"
+                  + " Found:\n" + _existingHarvests);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "7a5b8d2be009bd85e2ee03b96ad9b22e", "3d23fa770f897a30d71e619350696abf");
+    }, "30b0c9ad573231e324a05e7cf6fe5c21", "554cb91c796e73468d2feedb2c18f241");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -303,7 +328,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","crops","farm_activities","irrigation_logs","fertilizer_logs","disease_records","expenses","pest_records");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","crops","farm_activities","irrigation_logs","fertilizer_logs","disease_records","expenses","pest_records","harvests");
   }
 
   @Override
@@ -320,6 +345,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `disease_records`");
       _db.execSQL("DELETE FROM `expenses`");
       _db.execSQL("DELETE FROM `pest_records`");
+      _db.execSQL("DELETE FROM `harvests`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -341,6 +367,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(DiseaseRecordDao.class, DiseaseRecordDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(ExpenseDao.class, ExpenseDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(PestDao.class, PestDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(HarvestDao.class, HarvestDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -453,6 +480,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _pestDao = new PestDao_Impl(this);
         }
         return _pestDao;
+      }
+    }
+  }
+
+  @Override
+  public HarvestDao harvestDao() {
+    if (_harvestDao != null) {
+      return _harvestDao;
+    } else {
+      synchronized(this) {
+        if(_harvestDao == null) {
+          _harvestDao = new HarvestDao_Impl(this);
+        }
+        return _harvestDao;
       }
     }
   }

@@ -21,7 +21,8 @@ class AppContainer(context: Context) {
             database.logDao(),
             database.diseaseRecordDao(),
             database.expenseDao(),
-            database.pestDao()
+            database.pestDao(),
+            database.harvestDao()
         )
     }
 
@@ -31,5 +32,9 @@ class AppContainer(context: Context) {
 
     val diseaseDetectionRepository: DiseaseDetectionRepository by lazy {
         DiseaseDetectionRepository(database.diseaseRecordDao(), context)
+    }
+
+    val authRepository: com.smartcropcare.app.data.repository.AuthRepository by lazy {
+        com.smartcropcare.app.data.repository.AuthRepository(database.userDao())
     }
 }

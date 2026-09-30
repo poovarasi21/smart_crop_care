@@ -7,7 +7,7 @@ class SessionManager(context: Context) {
     private val prefs = context.getSharedPreferences("user_session", Context.MODE_PRIVATE)
 
     fun saveUserId(id: Long) {
-        prefs.edit().putLong("USER_ID", id).apply()
+        prefs.edit().putLong("USER_ID", id).commit()
     }
 
     fun getUserId(): Long {
@@ -19,7 +19,7 @@ class SessionManager(context: Context) {
     }
 
     fun logout() {
-        prefs.edit().clear().apply()
+        prefs.edit().remove("USER_ID").commit()
     }
 
     fun saveLanguage(language: String) {
@@ -59,5 +59,21 @@ class SessionManager(context: Context) {
 
     fun isCurrentLocationMode(): Boolean {
         return prefs.getBoolean("LOC_IS_CURRENT", true)
+    }
+
+    fun saveWeatherApiKey(apiKey: String) {
+        prefs.edit().putString("WEATHER_API_KEY", apiKey.trim()).apply()
+    }
+
+    fun getWeatherApiKey(): String {
+        return prefs.getString("WEATHER_API_KEY", "") ?: ""
+    }
+
+    fun saveNotificationsEnabled(enabled: Boolean) {
+        prefs.edit().putBoolean("NOTIFICATIONS_ENABLED", enabled).apply()
+    }
+
+    fun isNotificationsEnabled(): Boolean {
+        return prefs.getBoolean("NOTIFICATIONS_ENABLED", true)
     }
 }

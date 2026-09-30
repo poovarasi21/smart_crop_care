@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.smartcropcare.app.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -23,7 +24,13 @@ public final class FragmentProfileBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final MaterialButton btnChangeLocation;
+
+  @NonNull
   public final FrameLayout btnChangePhoto;
+
+  @NonNull
+  public final MaterialButton btnConfigureApiKey;
 
   @NonNull
   public final ImageView btnEditName;
@@ -38,23 +45,54 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final ImageView ivFarmerProfile;
 
   @NonNull
+  public final MaterialSwitch switchNotifications;
+
+  @NonNull
+  public final TextView tvFarmerEmail;
+
+  @NonNull
   public final TextView tvFarmerLocation;
 
   @NonNull
   public final TextView tvFarmerName;
 
-  private FragmentProfileBinding(@NonNull ScrollView rootView, @NonNull FrameLayout btnChangePhoto,
-      @NonNull ImageView btnEditName, @NonNull MaterialButton btnLogout,
-      @NonNull MaterialButton btnToggleLang, @NonNull ImageView ivFarmerProfile,
-      @NonNull TextView tvFarmerLocation, @NonNull TextView tvFarmerName) {
+  @NonNull
+  public final TextView tvFarmerPhone;
+
+  @NonNull
+  public final TextView tvNotificationStatus;
+
+  @NonNull
+  public final TextView tvSettingsApiKeyStatus;
+
+  @NonNull
+  public final TextView tvSettingsLocation;
+
+  private FragmentProfileBinding(@NonNull ScrollView rootView,
+      @NonNull MaterialButton btnChangeLocation, @NonNull FrameLayout btnChangePhoto,
+      @NonNull MaterialButton btnConfigureApiKey, @NonNull ImageView btnEditName,
+      @NonNull MaterialButton btnLogout, @NonNull MaterialButton btnToggleLang,
+      @NonNull ImageView ivFarmerProfile, @NonNull MaterialSwitch switchNotifications,
+      @NonNull TextView tvFarmerEmail, @NonNull TextView tvFarmerLocation,
+      @NonNull TextView tvFarmerName, @NonNull TextView tvFarmerPhone,
+      @NonNull TextView tvNotificationStatus, @NonNull TextView tvSettingsApiKeyStatus,
+      @NonNull TextView tvSettingsLocation) {
     this.rootView = rootView;
+    this.btnChangeLocation = btnChangeLocation;
     this.btnChangePhoto = btnChangePhoto;
+    this.btnConfigureApiKey = btnConfigureApiKey;
     this.btnEditName = btnEditName;
     this.btnLogout = btnLogout;
     this.btnToggleLang = btnToggleLang;
     this.ivFarmerProfile = ivFarmerProfile;
+    this.switchNotifications = switchNotifications;
+    this.tvFarmerEmail = tvFarmerEmail;
     this.tvFarmerLocation = tvFarmerLocation;
     this.tvFarmerName = tvFarmerName;
+    this.tvFarmerPhone = tvFarmerPhone;
+    this.tvNotificationStatus = tvNotificationStatus;
+    this.tvSettingsApiKeyStatus = tvSettingsApiKeyStatus;
+    this.tvSettingsLocation = tvSettingsLocation;
   }
 
   @Override
@@ -84,9 +122,21 @@ public final class FragmentProfileBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnChangeLocation;
+      MaterialButton btnChangeLocation = ViewBindings.findChildViewById(rootView, id);
+      if (btnChangeLocation == null) {
+        break missingId;
+      }
+
       id = R.id.btnChangePhoto;
       FrameLayout btnChangePhoto = ViewBindings.findChildViewById(rootView, id);
       if (btnChangePhoto == null) {
+        break missingId;
+      }
+
+      id = R.id.btnConfigureApiKey;
+      MaterialButton btnConfigureApiKey = ViewBindings.findChildViewById(rootView, id);
+      if (btnConfigureApiKey == null) {
         break missingId;
       }
 
@@ -114,6 +164,18 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.switchNotifications;
+      MaterialSwitch switchNotifications = ViewBindings.findChildViewById(rootView, id);
+      if (switchNotifications == null) {
+        break missingId;
+      }
+
+      id = R.id.tvFarmerEmail;
+      TextView tvFarmerEmail = ViewBindings.findChildViewById(rootView, id);
+      if (tvFarmerEmail == null) {
+        break missingId;
+      }
+
       id = R.id.tvFarmerLocation;
       TextView tvFarmerLocation = ViewBindings.findChildViewById(rootView, id);
       if (tvFarmerLocation == null) {
@@ -126,8 +188,34 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentProfileBinding((ScrollView) rootView, btnChangePhoto, btnEditName,
-          btnLogout, btnToggleLang, ivFarmerProfile, tvFarmerLocation, tvFarmerName);
+      id = R.id.tvFarmerPhone;
+      TextView tvFarmerPhone = ViewBindings.findChildViewById(rootView, id);
+      if (tvFarmerPhone == null) {
+        break missingId;
+      }
+
+      id = R.id.tvNotificationStatus;
+      TextView tvNotificationStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvNotificationStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSettingsApiKeyStatus;
+      TextView tvSettingsApiKeyStatus = ViewBindings.findChildViewById(rootView, id);
+      if (tvSettingsApiKeyStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSettingsLocation;
+      TextView tvSettingsLocation = ViewBindings.findChildViewById(rootView, id);
+      if (tvSettingsLocation == null) {
+        break missingId;
+      }
+
+      return new FragmentProfileBinding((ScrollView) rootView, btnChangeLocation, btnChangePhoto,
+          btnConfigureApiKey, btnEditName, btnLogout, btnToggleLang, ivFarmerProfile,
+          switchNotifications, tvFarmerEmail, tvFarmerLocation, tvFarmerName, tvFarmerPhone,
+          tvNotificationStatus, tvSettingsApiKeyStatus, tvSettingsLocation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

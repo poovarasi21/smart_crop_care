@@ -657,9 +657,9 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- 4. Growth Photos -->
+                <!-- 4. Pest Management -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardOpPhotos"
+                    android:id="@+id/cardOpPest"
                     style="@style/Widget.SmartCropCare.Card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -678,22 +678,23 @@
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:src="@drawable/ic_photo_library"
-                            app:tint="@color/secondary" />
+                            android:src="@drawable/ic_pest_control"
+                            app:tint="@color/tertiary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="Growth Photos"
+                            android:text="Pest Monitoring"
                             android:textColor="@color/on_surface"
                             android:textSize="13sp" />
 
                         <TextView
+                            android:id="@+id/tvPestSummary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="14 photos logged"
+                            android:text="No pests logged"
                             android:textColor="@color/on_surface_variant"
                             android:textSize="11sp" />
 
@@ -702,19 +703,22 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="Timeline Active"
-                            android:textColor="@color/secondary"
+                            android:text="Log Incident"
+                            android:textColor="@color/tertiary"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- 5. Micro-Weather -->
+                <!-- 5. Harvest & Yield Record -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardOpHarvest"
                     style="@style/Widget.SmartCropCare.Card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
-                    android:layout_marginEnd="4dp">
+                    android:layout_marginEnd="4dp"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -725,22 +729,23 @@
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:src="@drawable/ic_partly_cloudy"
-                            app:tint="@color/tertiary" />
+                            android:src="@drawable/ic_harvest"
+                            app:tint="@color/primary" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="Micro-Weather"
+                            android:text="Harvest &amp; Yield"
                             android:textColor="@color/on_surface"
                             android:textSize="13sp" />
 
                         <TextView
+                            android:id="@+id/tvHarvestSummary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="29°C, 62% RH"
+                            android:text="0 Harvested"
                             android:textColor="@color/on_surface_variant"
                             android:textSize="11sp" />
 
@@ -749,7 +754,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="Ideal Soil Temp"
+                            android:text="Record Yield"
                             android:textColor="@color/secondary"
                             android:textSize="10sp" />
                     </LinearLayout>
